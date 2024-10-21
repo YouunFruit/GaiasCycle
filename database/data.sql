@@ -1,9 +1,9 @@
-INSERT INTO Users (name, username, password, role, contact_details)
+INSERT INTO Users (name, username, password, role, ContactDetails)
 VALUES 
 ('Marie', 'marie_user', 'password123', 'Farmer', 'marie@example.com'),
 ('Iker', 'iker_user', 'password123', 'Technician', 'iker@example.com'),
 ('Martin', 'martin_user', 'password123', 'Admin', 'martin@example.com'),
-('Sam', 'sam_user', 'password123', 'Field Worker', 'sam@example.com'),
+('Sam', 'sam_user', 'password123', 'Farmer', 'sam@example.com'),
 ('Balita', 'balita_user', 'password123', 'Technician', 'balita@example.com'),
 ('Rishi', 'rishi_user', 'password123', 'Farmer', 'rishi@example.com');
 
