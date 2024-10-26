@@ -24,13 +24,49 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">Pricing</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Dropdown link
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
+    <form>
+        <div class="form-group">
+            <label for="userName">Name</label>
+            <input type="text" class="form-control" id="userName" aria-describedby="userName" placeholder="Enter user name">
+        </div>
+        <div class="form-group">
+            <label for="displayName">User name</label>
+            <input type="text" class="form-control" id="displayName" aria-describedby="displayName" placeholder="Enter display name">
+        </div>
+        <div class="form-group">
+            <label for="Password">Password</label>
+            <input type="password" class="form-control" id="password" placeholder="Enter Password">
+        </div>
+        <div class="form-group">
+            <label for="userRole">User role</label>
+            <select id="userRole" class="form-control">
+                <option>Admin</option>
+                <option>Technician</option>
+                <option>Farmer</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="userContact">user contact</label>
+            <input type="text" class="form-control" id="userContact" placeholder="Enter contact">
+        </div>
+
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
 </div>
 </body>
 </html>
