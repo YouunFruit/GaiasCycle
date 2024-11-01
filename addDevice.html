@@ -46,19 +46,21 @@
                 <h2 class="text-center mb-1 fw-bold">Add a New Device</h2>
                 <p class="text-center text-muted mb-4">Provide details about your device</p>
                 <form id="addDevice-form" onsubmit="handleFormSubmit(event)">
-                    <div class="form-group">
+                    <div class="form-group mb-3">
                         <label for="deviceName">Device Name</label>
                         <input type="text" class="form-control" id="deviceName" aria-describedby="deviceName" placeholder="Enter device name">
                     </div>
-                    <div class="form-group">
+                    <div class="form-group mb-3">
                         <label for="deviceType">Device Type</label>
                         <input type="text" class="form-control" id="deviceType" placeholder="Enter device type">
                     </div>
-                    <div class="form-group">
+                    <div class="form-group mb-3">
                         <label for="deviceInstallationDate">Installation Date</label>
                         <input type="text" class="form-control" id="deviceInstallationDate" placeholder="Enter installation date">
                     </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary">Add Device</button>
+                    </div>
                 </form>
             </div>
         </div>
