@@ -18,7 +18,7 @@
 </head>
 
 
-<body>
+<body class="d-flex flex-column min-vh-100">
     
     <div class="container-fluid">
     
@@ -63,9 +63,9 @@
         </style>
     </div>
 
-    <div class="container d-flex align-items-center justify-content-center flex-grow-1 w-full" style="height: 100vh;">
-        <div class="row justify-content-center w-full">
-            <div class="col-md-6 col-lg-5 w-auto">
+    <div class="container d-flex align-items-center justify-content-center flex-grow-1 w-full">
+        <div class="row justify-content-center w-full" style="width: 30vw;">
+            <div class="col-md-6 col-lg-5 w-100">
                 <div class="card p-4 shadow-lg border-0">
                     <h2 class="text-center mb-1 fw-bold">Sign In</h2>
                     <p class="text-center text-muted mb-4">Get back into action</p>
@@ -95,18 +95,6 @@
                     <!-- real form -->
                     <form id="signIn-form">
                         <div class="mb-3">
-                            <label for="fullName" class="form-label">Full Name</label>
-                            <input type="text" class="form-control" id="fullName" placeholder="Enter full name" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="city" class="form-label">City</label>
-                            <input type="text" class="form-control" id="city" placeholder="Enter city" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="country" class="form-label">Country</label>
-                            <input type="text" class="form-control" id="country" placeholder="Enter country" required>
-                        </div>
-                        <div class="mb-3">
                             <label for="email" class="form-label">Email address</label>
                             <input type="email" class="form-control" id="email" placeholder="Enter email" required>
                         </div>
@@ -130,6 +118,12 @@
             </div>
         </div>
     </div>
+
+    <footer class="bg-white border-top text-dark py-4">
+        <div class="container text-center">
+            <p>&copy; 2024 Gaia's cycle. All rights reserved.</p>
+        </div>
+    </footer>
 
     <script>
         document.getElementById('email-button').addEventListener('click', function (event) {
