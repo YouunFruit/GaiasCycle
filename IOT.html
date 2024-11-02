@@ -11,7 +11,20 @@
     <link rel="stylesheet" href="styles/fonts.css">
 </head>
 <body>
+<div id="navbar-placeholder"></div>
+
+<script>
+    fetch('./navbar.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('navbar-placeholder').innerHTML = data;
+        })
+        .catch(error => console.error('Error loading navbar:', error));
+</script>
+
     <div class="container-fluid">
+
+        <!--
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">GaiaCycle</a>
@@ -27,7 +40,7 @@
                 </div>
             </div>
         </nav>
-
+-->
         <div class="container my-4">
             <h1 class="text-center">Device List</h1>
             <table class="table table-bordered table-striped mt-4">

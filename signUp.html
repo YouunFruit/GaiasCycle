@@ -20,7 +20,17 @@
 
 
 <body class="d-flex flex-column min-vh-100">
-    <!-- Navbar -->
+<div id="navbar-placeholder"></div>
+
+<script>
+    fetch('./navbar.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('navbar-placeholder').innerHTML = data;
+        })
+        .catch(error => console.error('Error loading navbar:', error));
+</script>
+    <!--
     <nav class="navbar navbar-expand-lg bg-transparent">
         <div class="container-fluid">
             <a class="navbar-brand" href="/index.html">GaiaCycle</a>
@@ -59,7 +69,7 @@
             justify-content: center;
         }
     </style>
-    </div>
+    </div> -->
 
     <div class="d-flex align-items-center justify-content-center flex-grow-1">
         <div class="row justify-content-center" style="width: 30vw;">
@@ -130,7 +140,8 @@
 
                     <div class="text-center mt-3">
                         <small class="text-muted">Already have an account?
-                            <a href="/logIn.html" class="text-success text-decoration-none">Sign In</a>
+                            <a href="logIn.html" class="text-success text-decoration-none">Sign In</a>
+
                         </small>
                     </div>
                 </div>

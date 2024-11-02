@@ -19,11 +19,17 @@
         background-color: #f9fafb;
         color: #333;
       }
+<<<<<<< Updated upstream
       .page-header {
         color: white;
+=======
+   <!--   .page-header {
+        color: black;
+>>>>>>> Stashed changes
         padding: 20px;
         text-align: center;
       }
+
       .alert-card,
       .update-card {
         margin-top: 15px;
@@ -44,6 +50,18 @@
     </style>
   </head>
   <body>
+
+  <div id="navbar-placeholder"></div>
+
+  <script>
+    fetch('./navbar.html')
+            .then(response => response.text())
+            .then(data => {
+              document.getElementById('navbar-placeholder').innerHTML = data;
+            })
+            .catch(error => console.error('Error loading navbar:', error));
+  </script>
+  <!--
     <nav class="navbar sticky-top bg-body-tertiary">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">GaiaCycle</a>
@@ -75,7 +93,7 @@
           </ul>
         </div>
       </div>
-    </nav>
+    </nav>-->
     <!-- Page Header -->
     <div class="page-header bg-success">
       <h1>Alerts and Updates</h1>

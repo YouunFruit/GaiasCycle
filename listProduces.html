@@ -38,6 +38,17 @@
     </style>
   </head>
   <body>
+  <div id="navbar-placeholder"></div>
+
+  <script>
+    fetch('./navbar.html')
+            .then(response => response.text())
+            .then(data => {
+              document.getElementById('navbar-placeholder').innerHTML = data;
+            })
+            .catch(error => console.error('Error loading navbar:', error));
+  </script>
+  <!--
     <nav class="navbar sticky-top bg-body-tertiary">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">GaiaCycle</a>
@@ -70,8 +81,13 @@
         </div>
       </div>
     </nav>
+<<<<<<< Updated upstream
 
     <div class="header bg-success">Discover Our Produces</div>
+=======
+-->
+ <!--   <div class="header">Discover Our Produces</div> -->
+>>>>>>> Stashed changes
 
     <div class="container">
       <div class="search-bar">
