@@ -126,11 +126,23 @@
         </div>
     </div>
 
-    <footer class="bg-white border-top text-dark py-4">
-        <div class="container text-center">
-            <p>&copy; 2024 Gaia's cycle. All rights reserved.</p>
-        </div>
-    </footer>
+    <!-- Footer -->
+    <div id="footer-placeholder"></div>
+    
+    <!-- Footer Script -->
+    <script>
+        fetch('./footer.html')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok ' + response.statusText);
+                }
+                return response.text();
+            })
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+            })
+            .catch(error => console.error('Error loading navbar:', error));
+    </script>
 
     <script>
         document.getElementById('email-button').addEventListener('click', function (event) {
