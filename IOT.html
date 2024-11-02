@@ -54,5 +54,23 @@
             <a href="addDevice.html" class="btn btn-success mt-3">Add New Device</a>
         </div>
     </div>
+
+    <!-- Footer -->
+    <div id="footer-placeholder"></div>
+    
+    <!-- Footer Script -->
+    <script>
+        fetch('./footer.html')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok ' + response.statusText);
+                }
+                return response.text();
+            })
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+            })
+            .catch(error => console.error('Error loading navbar:', error));
+    </script>
 </body>
 </html>
