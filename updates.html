@@ -19,16 +19,7 @@
         background-color: #f9fafb;
         color: #333;
       }
-<<<<<<< Updated upstream
-      .page-header {
-        color: white;
-=======
-   <!--   .page-header {
-        color: black;
->>>>>>> Stashed changes
-        padding: 20px;
-        text-align: center;
-      }
+
 
       .alert-card,
       .update-card {
@@ -44,9 +35,22 @@
         box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);
       }
       .section-header {
+        background-color: white ;
         margin-top: 40px;
         font-size: 1.8rem;
       }
+
+       .page-header {
+         background-color: white; 
+         padding: 20px;
+         display: flex;
+         flex-direction: column;
+         justify-content: center;
+         align-items: center;
+         height: 140px;
+         text-align: center;
+       }
+
     </style>
   </head>
   <body>
@@ -61,46 +65,14 @@
             })
             .catch(error => console.error('Error loading navbar:', error));
   </script>
-  <!--
-    <nav class="navbar sticky-top bg-body-tertiary">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#">GaiaCycle</a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Features</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Pricing</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>-->
-    <!-- Page Header -->
-    <div class="page-header bg-success">
-      <h1>Alerts and Updates</h1>
-      <p>Stay updated on the latest news, alerts, and updates from GaiaCycle</p>
-    </div>
 
-    <!-- Alerts Section -->
+  <div class="page-header">
+    <h1>Alerts and Updates</h1>
+    <p>Stay updated on the latest news, alerts, and updates from GaiaCycle</p>
+  </div>
+
+
+  <!-- Alerts Section -->
     <div class="container mt-5">
       <h2 class="section-header">Important Alerts</h2>
 
