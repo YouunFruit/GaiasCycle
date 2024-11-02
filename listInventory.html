@@ -13,23 +13,18 @@
 </head>
 
 <body>
+<div id="navbar-placeholder"></div>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-transparent mb-4">
-        <div class="container">
-            <a class="navbar-brand fw-bold" href="/index.html">GaiaCycle</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto">
-                    <li class="nav-item"><a class="nav-link" href="/index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/tutorial.html">Tutorial</a></li>
-                </ul>
-                <a href="/signUp.html" class="btn btn-outline-dark">Register</a>
-            </div>
-        </div>
-    </nav>
+<script>
+    fetch('./navbar.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('navbar-placeholder').innerHTML = data;
+        })
+        .catch(error => console.error('Error loading navbar:', error));
+</script>
+
+
 
     <div class="container">
         <h1 class="text-center mb-4"><span class="fw-bolder">Inventory List</span></h1>
