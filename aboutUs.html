@@ -14,10 +14,15 @@
             font-size: 1.5rem;
             margin-top: 1rem;
         }
+
         .about-section {
             padding: 1.5rem;
         }
-        #graph-container, #live-updates, #history-container, #summary-container {
+
+        #graph-container,
+        #live-updates,
+        #history-container,
+        #summary-container {
             margin-top: 20px;
             padding: 15px;
             border-radius: 8px;
@@ -28,26 +33,16 @@
 
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-transparent mb-4">
-    <div class="container">
-        <a class="navbar-brand fw-bold" href="/index.html">GaiaCycle</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav me-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="/index.html">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/tutorial.html">Tutorial</a>
-                </li>
-            </ul>
-            <a href="/signUp.html" class="btn btn-outline-dark">Register</a>
-        </div>
-    </div>
-</nav>
+<div id="navbar-placeholder"></div>
+
+<script>
+    fetch('./navbar.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('navbar-placeholder').innerHTML = data;
+        })
+        .catch(error => console.error('Error loading navbar:', error));
+</script>
 
 <div class="container">
     <h2 class="text-center fw-bold mb-4">About Us</h2>
@@ -116,7 +111,7 @@
         integrity="sha384-6F3OwFpDAf2UV1awpnM6O5h15d/C+STk/w3Lz4/4KtPssZ8dDEj4lkIKn4aAhMOZ" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
-    // Placeholder for chart initialization with sustainability data
+
     const ctx = document.getElementById('sustainabilityGraph').getContext('2d');
     const sustainabilityChart = new Chart(ctx, {
         type: 'line',
@@ -144,7 +139,7 @@
         }
     });
 
-    // Placeholder for live updates (replace with real-time data fetching in production)
+    // live updates (to replace with real-time data fetching in production)
     document.getElementById('tomatoYield').textContent = '200 kg (Live)';
     document.getElementById('lettuceYield').textContent = '150 kg (Live)';
     document.getElementById('waterUsage').textContent = '120 liters';
