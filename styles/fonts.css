@@ -18,12 +18,12 @@ section {
     margin-bottom: 2rem;
 }
 
-span {
+.underline {
     position: relative;
     display: inline-block;
 }
 
-span::after {
+.underline::after {
     content: '';
     position: absolute;
     width: 100%;
