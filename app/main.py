@@ -18,8 +18,9 @@ async def read_root(req:Request):
 async def read_root(req:Request):
     return templates.TemplateResponse("maps.html",{"request":req})
 
-<<<<<<< Updated upstream
-
+@app.get("/contactUs", response_class=HTMLResponse)
+async def read_root(req:Request):
+    return templates.TemplateResponse("contactUs.html",{"request":req})
 @app.get("/IOT", response_class=HTMLResponse)
 async def read_root(req:Request):
     return templates.TemplateResponse("IOT.html",{"request":req})
@@ -41,7 +42,6 @@ async def read_root(req:Request):
 async def read_root(req:Request):
     return templates.TemplateResponse("addUser.html",{"request":req})
 
-=======
 @app.get("/listDevices", response_class=HTMLResponse)
 async def read_root(req:Request):
     return templates.TemplateResponse("listDevices.html",{"request":req})
@@ -49,4 +49,9 @@ async def read_root(req:Request):
 @app.get("/listFarms", response_class=HTMLResponse)
 async def read_root(req:Request):
     return templates.TemplateResponse("listFarms.html",{"request":req})
->>>>>>> Stashed changes
+
+
+@app.get("/statistics", response_class=HTMLResponse)
+async def read_root(req:Request):
+    return templates.TemplateResponse("statistics.html",{"request":req})
+
