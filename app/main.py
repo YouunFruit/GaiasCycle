@@ -29,7 +29,6 @@ async def read_root(req:Request):
 async def read_root(req:Request):
     return templates.TemplateResponse("addDevice.html",{"request":req})
 
-
 @app.get("/addFarm", response_class=HTMLResponse)
 async def read_root(req:Request):
     return templates.TemplateResponse("addFarm.html",{"request":req})
@@ -55,11 +54,13 @@ async def read_root(req:Request):
 async def read_root(req:Request):
     return templates.TemplateResponse("statistics.html",{"request":req})
 
+@app.get("/listInventory", response_class=HTMLResponse)
+async def read_root(req:Request):
+    return templates.TemplateResponse("listInventory.html",{"request":req})
 
 @app.get("/signUp", response_class=HTMLResponse)
 async def read_root(req:Request):
     return templates.TemplateResponse("signUp.html",{"request":req})
-
 
 @app.get("/tutorial", response_class=HTMLResponse)
 async def read_root(req:Request):
