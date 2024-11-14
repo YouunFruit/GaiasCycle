@@ -1,5 +1,207 @@
 {% extends "base.html"%}
 {% block content%}
-<h2>hello this is hompage</h2>
-<p>nuggets</p>
+    <section class="mt-0 mb-0">
+        <div class="image-gradient vh-100 d-flex align-items-end justify-content-center text-center">
+            <div class="text-white mb-4">
+                <h1 class="fw-bold display-1">FUTURE - SOLUTIONS</h1>
+                <div class="d-flex justify-content-between fs-5 fw-lighter mt-4">
+                    <p class="transparent">BE PART OF THE GLOBAL SHIFT TOWARDS CLEAN, SUSTAINABLE ENERGY RECOURCES.</p>
+                    <div class="d-flex align-items-center">
+                        <a href="#introduction" class="text-white text-decoration-none">Explore more</a>
+                        <i class="fas fa-arrow-down ms-2"></i>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <style>
+            .navbar {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                z-index: 1;
+            }
+
+            .image-gradient {
+                background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.7)),
+                url('https://images.unsplash.com/photo-1622122182232-2d43b075ed36?q=80&w=1171&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+                background-size: cover;
+                width: 100%;
+                height: 100vh;
+                background-position: center;
+                position: relative;
+                z-index: 0;
+            }
+        </style>
+    </section>
+
+
+    <!-- Introduction Section -->
+    <section class="container mt-5">
+
+        <div class="header mb-5">
+            <div id="introduction" class="d-flex justify-content-between border-bottom my-4 text-monospace">
+                <p >Introduction</p>
+                <p>2024</p>
+            </div>
+
+            <h1>Promoting clean <br> <span class="fw-bolder underline">carbon-free</span> foods</h1>
+        </div>
+
+        <div class="d-flex">
+            <div class="h-25">
+                <img src="https://www.cropmap.com/assets/images/home/map.gif" alt="" class="img-fluid rounded" style="object-fit:contain; height: 100%; width: 100%;">
+            </div>
+            <!-- Introduction text -->
+            <div class="ms-4 border-top border-dark" style="max-width: 20rem;">
+                <p class="mt-3 ">Embrace the harmony of nature and innovation as we foster carbon-free nourishment. Gaia’s principles
+                    guide every step, ensuring that each choice supports the Earth’s well-being. This map showcases our
+                    interconnected world, reflecting the power of sustainable, clean practices that nurture both people and the
+                    planet. Together, we create a cycle of life that thrives without compromise, honoring our commitment to a
+                    resilient, flourishing future.</p>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- Impact Section -->
+    <section class="container mt-5">
+        <div class="header mb-5">
+            <div class="d-flex justify-content-between border-bottom my-4 text-monospace">
+                <p >Impact</p>
+                <a href="#contribute" class="text-dark fw-light text-decoration-none">[CONTRIBUTE]</a>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3 text-center">
+                <p><strong class="display-5">1.3</strong> tones</p>
+                <p class="mb-0">CO<small>2</small> Tones Saved</p>
+                <p class="fw-light">Annually</p>
+            </div>
+            <div class="col-md-3 text-center">
+                <p><strong class="display-5">20.1</strong> grams</p>
+                <p class="mb-0">CO<small>2</small> Emissions Saved</p>
+                <p class="fw-light">Per Veggie</p>
+            </div>
+            <div class="col-md-3 text-center">
+                <p><strong class="display-5">37.4</strong> %</p>
+                <p class="mb-0">Goal Achieved</p>
+                <p class="fw-light">Percentage</p>
+            </div>
+            <div class="col-md-3 text-center">
+                <p><strong class="display-5">1.2</strong> years</p>
+                <p class="mb-0">Healthy Earth Years Saved</p>
+                <p class="fw-light">From CO<small>2</small> Emissions</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technologies Section -->
+    <section class="container mt-5">
+        <div class="header mb-5">
+            <div class="d-flex justify-content-between border-bottom my-4 text-monospace">
+                <p >Technology</p>
+            </div>
+
+            <h1 class="text-right">Powered by <br> <span class="fw-bolder underline">next-gen</span> Technologies</h1>
+        </div>
+
+        <div class="row d-flex align-items-stretch">
+            <div class="col-md-6 mb-5">
+                <img src="https://plus.unsplash.com/premium_photo-1663076306950-f6602c629ff4?q=80&w=3357&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                     alt="" class="img-fluid rounded" style="object-fit:cover; height: 100%; width: 100%;">
+            </div>
+            <!-- Tech tiles -->
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+                        <div class="tile border-top border-dark p-4 h-100 d-flex flex-column justify-content-between"
+                             style="height: 100%;">
+                            <div class="pb-5">
+                                <h5>Artificial Intelligence</h5>
+                                <i class="fas fa-robot fs-1"></i>
+                            </div>
+                            <a href="#" class="text-black text-decoration-none fw-lighte">[VIEW DETAILS]</a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <div class="tile border-top border-dark p-4 h-100 d-flex flex-column justify-content-between"
+                             style="height: 100%;">
+                            <div class="pb-5">
+                                <h5>Vertical Farming</h5>
+                                <i class="fas fa-tree fs-1"></i>
+                            </div>
+                            <a href="#" class="text-black text-decoration-none fw-lighte">[VIEW DETAILS]</a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <div class="tile border-top border-dark p-4 h-100 d-flex flex-column justify-content-between"
+                             style="height: 100%;">
+                            <div class="pb-5">
+                                <h5>IoT Connectivity</h5>
+                                <i class="fas fa-wifi fs-1"></i>
+                            </div>
+                            <a href="#" class="text-black text-decoration-none fw-lighte">[VIEW DETAILS]</a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <div class="tile p-4 h-100 d-flex flex-column justify-content-between text-white rounded bg-dark"
+                             style="height: 100%;">
+                            <div class="pb-5">
+                                <h5 >LED Lights</h5>
+                                <i class="fas fa-sun fs-1"></i>
+                            </div>
+                            <a href="#" class="text-decoration-none text-white fw-lighter">[VIEW DETAILS]</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="container mt-5">
+        <div class="header mb-5">
+            <div class="d-flex justify-content-between border-bottom my-4 text-monospace">
+                <p >Process</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3 text-center">
+                <i class="fas fa-seedling fs-2 mb-2"></i>
+                <h5 class="mb-0">Planting</h5>
+                <p class="fw-light">Step ONE</p>
+                <p>Use Gaia's smart tech to start planting.</p>
+            </div>
+            <div class="col-md-3 text-center">
+                <i class="fas fa-satellite-dish fs-2 mb-2"></i>
+                <h5 class="mb-0">Monitor</h5>
+                <p class="fw-light">Step TWO</p>
+                <p>Advanced sensors to monitor growth.</p>
+            </div>
+            <div class="col-md-3 text-center">
+                <i class="fas fa-chart-line fs-2 mb-2"></i>
+                <h5 class="mb-0">Analyze</h5>
+                <p class="fw-light">Step THREE</p>
+                <p>Data-driven analysis for best practices.</p>
+            </div>
+            <div class="col-md-3 text-center">
+                <i class="fas fa-leaf fs-2 mb-2"></i>
+                <h5 class="mb-0">Harvest</h5>
+                <p class="fw-light">Step FOUR</p>
+                <p>Sustainable harvesting with minimal CO<small>2</small>.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section id="contribute" class="container-fluid p-5 text-center" style="margin-bottom: 5rem !important;">
+        <h2 class="fw-bold">Join <span class="underline">Gaia's Cycle</span> Community</h2>
+        <p>Take the first step towards eco-friendly farming today.</p>
+        <a href="signUp.html" class="btn btn-success">Sign Up Now</a>
+    </section>
 {%endblock%}

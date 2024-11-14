@@ -13,3 +13,7 @@ async def read_root(req:Request):
 @app.get("/about", response_class=HTMLResponse)
 async def read_root(req:Request):
     return templates.TemplateResponse("aboutUs.html",{"request":req})
+
+@app.get("/maps", response_class=HTMLResponse)
+async def read_root(req:Request):
+    return templates.TemplateResponse("maps.html",{"request":req})
