@@ -1,0 +1,99 @@
+{% extends "base.html"%}
+{% block content %}
+<div class="d-flex align-items-center justify-content-center flex-grow-1">
+    <div class="row justify-content-center" style="width: 30vw;">
+        <div class="col-md-6 col-lg-5 w-100">
+            <div class="card p-4 shadow-lg border-0">
+                <h2 class="text-center mb-1 fw-bold">Sign Up</h2>
+                <p class="text-center text-muted mb-4">Create an account to access all features</p>
+
+                <!-- Google button -->
+                <a href="#" class="btn btn-outline-success d-flex align-items-center justify-content-center mb-3">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/archive/c/c1/20190923152039%21Google_%22G%22_logo.svg"
+                         alt="Google" width="20" class="me-2">
+                    Sign up with Google
+                </a>
+
+                <!-- or line -->
+                <div class="d-flex align-items-center mb-3">
+                    <hr class="flex-grow-1">
+                    <span class="mx-2 text-muted">or</span>
+                    <hr class="flex-grow-1">
+                </div>
+
+                <!-- Email button -->
+                <a id="email-button" href="#"
+                   class="btn btn-outline-success d-flex align-items-center justify-content-center mb-3">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/Email_%2889509%29_-_The_Noun_Project.svg"
+                         alt="Google" width="20" class="me-2">
+                    Sign up with Email
+                </a>
+
+                <!-- real form -->
+                <form id="signUp-form">
+                    <div class="d-flex gap-2 w-100">
+                        <div class="mb-3 w-100">
+                            <label for="firstName" class="form-label">First name</label>
+                            <input type="firstName" class="form-control w-100" id="firstName" placeholder="Enter your first name" required>
+                        </div>
+                        <div class="mb-3 w-100">
+                            <label for="lastName" class="form-label">Last name</label>
+                            <input type="lastName" class="form-control" id="lastName" placeholder="Enter your last name" required>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Username</label>
+                        <input type="username" class="form-control" id="username" placeholder="Enter desired username" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email address</label>
+                        <input type="email" class="form-control" id="email" placeholder="Enter email" required>
+                    </div>
+                    <div class="mb-3">
+                        <div class="d-flex gap-2 w-100">
+                            <div class="w-100">
+                                <label for="password" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="password" placeholder="Enter password" required>
+                            </div>
+                            <div class="w-100">
+                                <label for="repeatPassword" class="form-label">Repeat password</label>
+                                <input type="password" class="form-control" id="repeatPassword" placeholder="Enter repeated password"
+                                       required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-success">Sign Up</button>
+                    </div>
+                </form>
+
+                <div class="text-center mt-3">
+                    <small class="text-muted">Already have an account?
+                        <a href="logIn.html" class="text-success text-decoration-none">Sign In</a>
+
+                    </small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Success modal -->
+<div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="successModalLabel">Success</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Your device has been successfully added!
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{%endblock%}
