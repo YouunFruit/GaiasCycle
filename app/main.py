@@ -17,3 +17,26 @@ async def read_root(req:Request):
 @app.get("/maps", response_class=HTMLResponse)
 async def read_root(req:Request):
     return templates.TemplateResponse("maps.html",{"request":req})
+
+
+@app.get("/IOT", response_class=HTMLResponse)
+async def read_root(req:Request):
+    return templates.TemplateResponse("IOT.html",{"request":req})
+
+@app.get("/addDevice", response_class=HTMLResponse)
+async def read_root(req:Request):
+    return templates.TemplateResponse("addDevice.html",{"request":req})
+
+
+@app.get("/addFarm", response_class=HTMLResponse)
+async def read_root(req:Request):
+    return templates.TemplateResponse("addFarm.html",{"request":req})
+
+@app.get("/addProduces", response_class=HTMLResponse)
+async def read_root(req:Request):
+    return templates.TemplateResponse("addProduces.html",{"request":req})
+
+@app.get("/addUser", response_class=HTMLResponse)
+async def read_root(req:Request):
+    return templates.TemplateResponse("addUser.html",{"request":req})
+

@@ -1,0 +1,76 @@
+{% extends "base.html"%}
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-5">
+            <div class="card p-4 shadow-lg border-0">
+                <h2 class="text-center mb-1 fw-bold">Add New Produce</h2>
+                <p class="text-center text-muted mb-4">Provide details about your produce</p>
+
+
+                <form id="addProduce-form" onsubmit="handleProduceFormSubmit(event)">
+                    <div class="mb-3">
+                        <label for="produceName" class="form-label">Produce Name</label>
+                        <input type="text" class="form-control" id="produceName" name="produceName" placeholder="Enter produce name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="produceType" class="form-label">Produce Type</label>
+                        <select class="form-select" id="produceType" name="produceType" required onchange="toggleLivestockOptions()">
+                            <option selected disabled>Choose produce type</option>
+                            <option value="Vegetable">Vegetable</option>
+                            <option value="Fruit">Fruit</option>
+                            <option value="Herb">Herb</option>
+                            <option value="Grain">Grain</option>
+                            <option value="Livestock">Livestock</option>
+                        </select>
+                    </div>
+
+
+                    <div class="mb-3" id="livestockOptions" style="display: none;">
+                        <label for="livestockType" class="form-label">Select Animal</label>
+                        <select class="form-select" id="livestockType" name="livestockType">
+                            <option selected disabled>Select an animal</option>
+                            <option value="Cattle">Cattle</option>
+                            <option value="Sheep">Sheep</option>
+                            <option value="Goats">Goats</option>
+                            <option value="Poultry">Poultry</option>
+                            <option value="Pigs">Pigs</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="quantity" class="form-label">Quantity (in kg)</label>
+                        <input type="number" class="form-control" id="quantity" name="quantity" placeholder="Enter quantity" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="harvestDate" class="form-label">Harvest Date</label>
+                        <input type="date" class="form-control" id="harvestDate" name="harvestDate" required>
+                    </div>
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-success">Add Produce</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="produceSuccessModal" tabindex="-1" aria-labelledby="produceSuccessModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="produceSuccessModalLabel">Success</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Your produce has been successfully added!
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-bs-dismiss="modal">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+{%endblock%}
+

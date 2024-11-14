@@ -1,0 +1,62 @@
+{% extends "base.html"%}
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-5">
+            <div class="card p-4 shadow-lg border-0">
+                <h2 class="text-center mb-1 fw-bold">Add a New Farm</h2>
+                <p class="text-center text-muted mb-4">Provide details about your farm</p>
+
+
+                <form id="addFarm-form" onsubmit="handleFormSubmit(event)">
+                    <div class="mb-3">
+                        <label for="farmName" class="form-label">Farm Name</label>
+                        <input type="text" class="form-control" id="farmName" name="farmName" placeholder="Enter farm name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="location" class="form-label">Location</label>
+                        <input type="text" class="form-control" id="location" name="location" placeholder="Enter location" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="size" class="form-label">Size (in acres)</label>
+                        <input type="number" class="form-control" id="size" name="size" placeholder="Enter farm size" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="type" class="form-label">Type of Farm</label>
+                        <select class="form-select" id="type" name="type" required>
+                            <option selected disabled>Choose farm type</option>
+                            <option value="Organic">Crop</option>
+                            <option value="Hydroponic">Livestock</option>
+                            <option value="Greenhouse">Greenhouse</option>
+                            <option value="Traditional">Urban</option>
+                        </select>
+                    </div>
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-success">Add Farm</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="successModalLabel">Success</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Your farm has been successfully added!
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-bs-dismiss="modal">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{%endblock%}
+
