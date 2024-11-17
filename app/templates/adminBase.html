@@ -10,22 +10,44 @@
     <link rel="stylesheet" href="styles/fonts.css">
 </head>
 <body>
-<div class="navbar">
+<div class="navbar navbar-dark bg-dark ">
     <a href="/" class="logo">GaiaCycle</a>
+    <a href="/admin" class="btn btn-primary " tabindex="-1" role="button" >Admin Page</a>
     <div class="navbar-menu">
-        <a href="/dashboard">Dashboard</a>
+        <a href="/admin">Dashboard</a>
         <a href="/dashboard">Tower Stats</a>
         <a href="/dashboard">Alerts</a>
 
 
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
+            <span > 👤</span>
+        </button>
 
+        <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">User Name</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Your Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Your Farm</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Need Help?</a>
+                    </li>
+                    <li class="nav-item">
+                        <button type="button" class="btn btn-outline-danger">Sign Out</button>
+                    </li>
 
-        <div class="dropdown">
-            <a href="#" class="dropdown-toggle">User Name</a>
-            <div class="dropdown-menu">
-                <a href="/addDevice">Your Profile</a>
-                <a href="/addFarm">Your Farm</a>
-                <a href="/addUser">Sign Out</a>
+                </ul>
+                <form class="d-flex mt-3" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-success" type="submit">Search</button>
+                </form>
             </div>
         </div>
 
