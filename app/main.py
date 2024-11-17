@@ -81,3 +81,7 @@ async def read_root(req:Request):
 @app.get("/login", response_class=HTMLResponse)
 async def read_root(req:Request):
     return templates.TemplateResponse("logIn.html",{"request":req})
+
+@app.get("/admin", response_class=HTMLResponse)
+async def read_root(req:Request):
+    return templates.TemplateResponse("dashboard.html",{"request":req})
