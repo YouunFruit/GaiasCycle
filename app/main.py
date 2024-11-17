@@ -70,4 +70,10 @@ async def read_root(req:Request):
 async def read_root(req:Request):
     return templates.TemplateResponse("updates.html",{"request":req})
 
+@app.get("/listProduces", response_class=HTMLResponse)
+async def read_root(req:Request):
+    return templates.TemplateResponse("listProduces.html",{"request":req})
 
+@app.get("/login", response_class=HTMLResponse)
+async def read_root(req:Request):
+    return templates.TemplateResponse("logIn.html",{"request":req})
