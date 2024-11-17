@@ -1,0 +1,182 @@
+{% extends "base.html"%}
+{% block content%}
+    <style>
+        body {
+            background-color: #f9fafb;
+            color: #333;
+        }
+
+
+        .alert-card,
+        .update-card {
+            margin-top: 15px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+        .alert-card:hover,
+        .update-card:hover {
+            box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);
+        }
+        .section-header {
+            background-color: white ;
+            margin-top: 40px;
+            font-size: 1.8rem;
+        }
+
+        .page-header {
+            background-color: white;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 140px;
+            text-align: center;
+        }
+
+    </style>
+    <!-- Alerts Section -->
+    <div class="container mt-5">
+        <h2 class="section-header">Important Alerts</h2>
+
+        <div
+                class="alert-card alert alert-warning"
+                onclick="showDetails('Water Shortage Alert', 'Due to unexpected issues with the local water supply, please minimize water usage in tower 2 today. We are working to resolve the issue promptly.', 'November 31, 2024')"
+        >
+            <h5 class="alert-heading">Water Shortage Alert</h5>
+            <p class="mb-0"><small>Posted on November 31, 2024</small></p>
+        </div>
+
+        <div
+                class="alert-card alert alert-danger"
+                onclick="showDetails('Severe Weather Warning', 'A winter storm is expected in the area over the next 24 hours. Secure all farm equipment and shelter delicate plants to prevent damage.', 'December 18, 2024')"
+        >
+            <h5 class="alert-heading">Severe Weather Warning</h5>
+            <p class="mb-0"><small>Posted on December 18, 2024</small></p>
+        </div>
+
+        <div
+                class="alert-card alert alert-info"
+                onclick="showDetails('System Maintenance', 'We will be performing scheduled maintenance on our web platform from 10:00 PM to 12:00 AM tonight. During this time, some features may be unavailable.', 'December 25, 2024')"
+        >
+            <h5 class="alert-heading">System Maintenance</h5>
+            <p class="mb-0"><small>Posted on December 25, 2024</small></p>
+        </div>
+
+        <div
+                class="alert-card alert alert-warning"
+                onclick="showDetails('Pest Control Advisory', 'We have detected an increase in pest activity in the towers. Farmers are advised to inspect their crops and bots regularly and report any issues.', 'November 19, 2024')"
+        >
+            <h5 class="alert-heading">Pest Control Advisory</h5>
+            <p class="mb-0"><small>Posted on November 19, 2024</small></p>
+        </div>
+
+        <div
+                class="alert-card alert alert-danger"
+                onclick="showDetails('Frost Warning', 'A frost warning has been issued for the upcoming night. Please cover sensitive plants and ensure to regulate the temperatures in each tower.', 'December 27, 2024')"
+        >
+            <h5 class="alert-heading">Frost Warning</h5>
+            <p class="mb-0"><small>Posted on December 27, 2024</small></p>
+        </div>
+
+        <div
+                class="alert-card alert alert-info"
+                onclick="showDetails('Farm Equipment Inspection', 'All farm equipment must undergo a mandatory inspection before the start of the next planting season. Please schedule your inspection by March 1.', 'January 26, 2025')"
+        >
+            <h5 class="alert-heading">Farm Equipment Inspection</h5>
+            <p class="mb-0"><small>Posted on January 26, 2025</small></p>
+        </div>
+    </div>
+
+    <!-- Updates Section -->
+    <div class="container mt-5">
+        <h2 class="section-header">Latest Updates</h2>
+
+        <div
+                class="update-card card mb-3"
+                onclick="showDetails('New Produce Added: Onion', 'We are excited to announce that fresh, organic oOnion is now available for harvest. Check the produce page for more details on pricing and availability.', 'November 29, 2024')"
+        >
+            <div class="card-body">
+                <h5 class="card-title">New Produce Added: Onion</h5>
+                <p class="card-text">
+                    <small class="text-muted">Posted on November 29, 2024</small>
+                </p>
+            </div>
+        </div>
+
+        <div
+                class="update-card card mb-3"
+                onclick="showDetails('Community Harvest Event', 'Join us this Weekend for a community harvest event! Enjoy hands-on activities, meet fellow farmers, and take home fresh produce. Register on our events page.', 'December 22, 2024')"
+        >
+            <div class="card-body">
+                <h5 class="card-title">Community Harvest Event</h5>
+                <p class="card-text">
+                    <small class="text-muted">Posted on December 22, 2024</small>
+                </p>
+            </div>
+        </div>
+
+        <div
+                class="update-card card mb-3"
+                onclick="showDetails('Workshop: Sustainable Farming Practices', 'Learn about sustainable farming practices in GaiaCycle with our new workshop. Register now to reserve your spot and contribute to a greener future.', 'June 27, 2025')"
+        >
+            <div class="card-body">
+                <h5 class="card-title">Workshop: Sustainable Farming Practices</h5>
+                <p class="card-text">
+                    <small class="text-muted">Posted on June 27, 2025</small>
+                </p>
+            </div>
+        </div>
+
+        <div
+                class="update-card card mb-3"
+                onclick="showDetails('New Partnership with Local Organic Market', 'We are thrilled to announce our new partnership with Green Valley Organic Market, Beerlin, where our fresh produce will be available starting next month!', 'May 16, 2025')"
+        >
+            <div class="card-body">
+                <h5 class="card-title">New Partnership with Local Organic Market</h5>
+                <p class="card-text">
+                    <small class="text-muted">Posted on May 16, 2025</small>
+                </p>
+            </div>
+        </div>
+
+        <div
+                class="update-card card mb-3"
+                onclick="showDetails('Volunteer Days Rescheduled', 'Due to weather conditions, the volunteer days have been rescheduled to November 5 and November 12. Please register to participate!', 'October 31, 2024')"
+        >
+            <div class="card-body">
+                <h5 class="card-title">Volunteer Days Rescheduled</h5>
+                <p class="card-text">
+                    <small class="text-muted">Posted on October 31, 2024</small>
+                </p>
+            </div>
+        </div>
+
+        <div
+                class="update-card card mb-3"
+                onclick="showDetails('New Crop Rotation Plan', 'This years crop rotation plan is now finalized. Please review it to understand your planting schedules for the upcoming season.', 'November 08, 2024')"
+        >
+            <div class="card-body">
+                <h5 class="card-title">New Crop Rotation Plan</h5>
+                <p class="card-text">
+                    <small class="text-muted">Posted on November 08, 2024</small>
+                </p>
+            </div>
+        </div>
+
+        <div
+                class="update-card card mb-3"
+                onclick="showDetails('Harvest Festival Planning Meeting', 'We will hold a planning meeting for the Harvest Festival next Tuesday at 6 PM in the community room. Everyone is welcome to contribute ideas!', 'December 20, 2024')"
+        >
+            <div class="card-body">
+                <h5 class="card-title">Harvest Festival Planning Meeting</h5>
+                <p class="card-text">
+                    <small class="text-muted">Posted on December 20, 2024</small>
+                </p>
+            </div>
+        </div>
+    </div>
+{%endblock%}

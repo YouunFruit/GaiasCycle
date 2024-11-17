@@ -66,4 +66,8 @@ async def read_root(req:Request):
 async def read_root(req:Request):
     return templates.TemplateResponse("tutorial.html",{"request":req})
 
+@app.get("/updates", response_class=HTMLResponse)
+async def read_root(req:Request):
+    return templates.TemplateResponse("updates.html",{"request":req})
+
 
