@@ -32,10 +32,26 @@
     <h2 class="text-center mb-4 fw-bold">Farm Device Statistics</h2>
     <p class="text-center text-muted">Overview of all automated farming devices on your farm</p>
 
+    <div class="mb-4 d-flex justify-content-between">
+        <div>
+            <label for="sortDevices" class="form-label">Sort by:</label>
+            <select id="sortDevices" class="form-select form-select-sm w-auto">
+                <option value="name">Name</option>
+                <option value="type">Type</option>
+                <option value="status">Status</option>
+                <option value="power">Power Usage</option>
+            </select>
+        </div>
+        <div>
+            <label for="searchDevices" class="form-label">Search:</label>
+            <input id="searchDevices" type="text" class="form-control form-control-sm w-auto" placeholder="Search devices...">
+        </div>
+    </div>
+
     <div class="container">
         <div id="deviceGrid" class="row row-cols-1 row-cols-md-3 g-4">
 
-            <div class="col" data-device="Irrigation System" data-warning="none" data-tower="Tower A">
+            <div class="col" data-name="Device Name 1" data-type="Irrigation System" data-status="Active" data-power="50">
                 <div class="card h-100 shadow-sm">
                     <div class="card-body">
                         <h5 class="card-title">Device Name 1</h5>
@@ -43,9 +59,9 @@
                         <p class="card-text"><strong>Status:</strong> Active</p>
                         <p class="card-text"><strong>Power Usage:</strong> 50W</p>
                         <p class="card-text"><strong>Tower:</strong> Tower A</p>
-                        <button class="btn btn-outline-success btn-sm mt-3 toggle-details-btn" 
-                                type="button" data-bs-toggle="collapse" 
-                                data-bs-target="#deviceDetails1" 
+                        <button class="btn btn-outline-success btn-sm mt-3 toggle-details-btn"
+                                type="button" data-bs-toggle="collapse"
+                                data-bs-target="#deviceDetails1"
                                 aria-expanded="false" aria-controls="deviceDetails1">
                             Show Details
                         </button>
@@ -62,7 +78,7 @@
                 </div>
             </div>
 
-            <div class="col" data-device="Sensor" data-warning="warning" data-tower="Tower B">
+            <div class="col" data-name="Device Name 2" data-type="Sensor" data-status="Inactive" data-power="220">
                 <div class="card h-100 shadow-sm">
                     <div class="card-body">
                         <h5 class="card-title">Device Name 2</h5>
@@ -70,9 +86,9 @@
                         <p class="card-text"><strong>Status:</strong> Inactive</p>
                         <p class="card-text"><strong>Power Usage:</strong> 220W</p>
                         <p class="card-text"><strong>Tower:</strong> Tower B</p>
-                        <button class="btn btn-outline-success btn-sm mt-3 toggle-details-btn" 
-                                type="button" data-bs-toggle="collapse" 
-                                data-bs-target="#deviceDetails2" 
+                        <button class="btn btn-outline-success btn-sm mt-3 toggle-details-btn"
+                                type="button" data-bs-toggle="collapse"
+                                data-bs-target="#deviceDetails2"
                                 aria-expanded="false" aria-controls="deviceDetails2">
                             Show Details
                         </button>
@@ -93,7 +109,40 @@
 </div>
 
 <script>
-    
+    document.getElementById('sortDevices').addEventListener('change', function () {
+        const criteria = this.value;
+        const deviceGrid = document.getElementById('deviceGrid');
+        const devices = Array.from(deviceGrid.children);
+
+        devices.sort((a, b) => {
+            const aValue = a.dataset[criteria].toLowerCase();
+            const bValue = b.dataset[criteria].toLowerCase();
+
+            if (criteria === 'power') {
+                return parseFloat(a.dataset[criteria]) - parseFloat(b.dataset[criteria]);
+            }
+            return aValue.localeCompare(bValue);
+        });
+
+        devices.forEach(device => deviceGrid.appendChild(device));
+    });
+
+    document.getElementById('searchDevices').addEventListener('input', function () {
+        const query = this.value.toLowerCase();
+        const devices = document.querySelectorAll('#deviceGrid .col');
+
+        devices.forEach(device => {
+            const name = device.dataset.name.toLowerCase();
+            const type = device.dataset.type.toLowerCase();
+
+            if (name.includes(query) || type.includes(query)) {
+                device.style.display = '';
+            } else {
+                device.style.display = 'none';
+            }
+        });
+    });
+
     document.querySelectorAll('.toggle-details-btn').forEach(button => {
         button.addEventListener('click', function () {
             const collapseTarget = document.querySelector(this.getAttribute('data-bs-target'));
