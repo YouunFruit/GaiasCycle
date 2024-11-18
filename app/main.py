@@ -21,40 +21,36 @@ async def read_root(req:Request):
 @app.get("/contactUs", response_class=HTMLResponse)
 async def read_root(req:Request):
     return templates.TemplateResponse("contactUs.html",{"request":req})
-@app.get("/IOT", response_class=HTMLResponse)
+@app.get("/admin/IOT", response_class=HTMLResponse)
 async def read_root(req:Request):
     return templates.TemplateResponse("IOT.html",{"request":req})
 
-@app.get("/addDevice", response_class=HTMLResponse)
+@app.get("/admin/addDevice", response_class=HTMLResponse)
 async def read_root(req:Request):
     return templates.TemplateResponse("addDevice.html",{"request":req})
 
-@app.get("/addFarm", response_class=HTMLResponse)
+@app.get("/admin/addFarm", response_class=HTMLResponse)
 async def read_root(req:Request):
     return templates.TemplateResponse("addFarm.html",{"request":req})
 
-@app.get("/addProduces", response_class=HTMLResponse)
-async def read_root(req:Request):
-    return templates.TemplateResponse("addProduces.html",{"request":req})
-
-@app.get("/addUser", response_class=HTMLResponse)
+@app.get("/admin/addUser", response_class=HTMLResponse)
 async def read_root(req:Request):
     return templates.TemplateResponse("addUser.html",{"request":req})
 
-@app.get("/listDevices", response_class=HTMLResponse)
+@app.get("/admin/listDevices", response_class=HTMLResponse)
 async def read_root(req:Request):
     return templates.TemplateResponse("listDevices.html",{"request":req})
 
-@app.get("/listFarms", response_class=HTMLResponse)
+@app.get("/admin/listFarms", response_class=HTMLResponse)
 async def read_root(req:Request):
     return templates.TemplateResponse("listFarms.html",{"request":req})
 
 
-@app.get("/statistics", response_class=HTMLResponse)
+@app.get("/admin/statistics", response_class=HTMLResponse)
 async def read_root(req:Request):
     return templates.TemplateResponse("statistics.html",{"request":req})
 
-@app.get("/listInventory", response_class=HTMLResponse)
+@app.get("/admin/listInventory", response_class=HTMLResponse)
 async def read_root(req:Request):
     return templates.TemplateResponse("listInventory.html",{"request":req})
 
@@ -66,15 +62,11 @@ async def read_root(req:Request):
 async def read_root(req:Request):
     return templates.TemplateResponse("tutorial.html",{"request":req})
 
-@app.get("/updates", response_class=HTMLResponse)
+@app.get("/admin/updates", response_class=HTMLResponse)
 async def read_root(req:Request):
     return templates.TemplateResponse("updates.html",{"request":req})
 
-@app.get("/listProduces", response_class=HTMLResponse)
-async def read_root(req:Request):
-    return templates.TemplateResponse("listProduces.html",{"request":req})
-
-@app.get("/listUsers", response_class=HTMLResponse)
+@app.get("/admin/listUsers", response_class=HTMLResponse)
 async def read_root(req:Request):
     return templates.TemplateResponse("listUsers.html",{"request":req})
 
