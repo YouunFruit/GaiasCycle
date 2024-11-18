@@ -1,0 +1,113 @@
+{% extends "base.html"%}
+{% block content%}
+<style>
+    #map {
+        height: 500px;
+        border-radius: 8px;
+        margin-top: 20px;
+    }
+
+    .search-bar {
+        background-color: white;
+        padding: 10px;
+        border-radius: 25px;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+        z-index: 10;
+        width: 50%;
+        margin: 20px auto;
+        position: relative;
+    }
+
+    .search-bar input {
+        width: calc(100% - 80px);
+        border: 1px solid #ccc;
+        border-radius: 25px;
+        padding: 8px;
+        font-size: 16px;
+        padding-right: 40px;
+    }
+
+    .search-bar button {
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: #4CAF50;
+        color: white;
+        border: none;
+        padding: 8px 12px;
+        border-radius: 25px;
+        cursor: pointer;
+    }
+
+    .search-bar button:hover {
+        background-color: #45a049;
+    }
+</style>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
+
+<div class="container">
+    <h2 class="text-center fw-bold">Map of Locations</h2>
+
+    <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Search by city or ZIP code">
+        <button id="searchBtn">Search</button>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-lg border-0 p-4">
+                <div id="map"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-6F3OwFpDAf2UV1awpnM6O5h15d/C+STk/w3Lz4/4KtPssZ8dDEj4lkIKn4aAhMOZ" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+
+<script>
+    const map = L.map('map').setView([52.52, 13.405], 13);  // Default location (Berlin)
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 18,
+        attribution: '© OpenStreetMap contributors'
+    }).addTo(map);
+
+    // Example locations
+    const locations = [
+        { lat: 52.52, lng: 13.405, name: "Berlin, Germany", link: "/produce/berlin" },
+        { lat: 48.8566, lng: 2.3522, name: "Paris, France", link: "/produce/paris" },
+        { lat: 51.5074, lng: -0.1278, name: "London, UK", link: "/produce/london" }
+    ];
+
+    // Adding markers with links to the corresponding pages
+    locations.forEach(location => {
+        const marker = L.marker([location.lat, location.lng]).addTo(map)
+            .bindPopup(`<b>${location.name}</b><br><a href="${location.link}">View Produce</a>`)
+            .openPopup();
+    });
+
+    // Custom search functionality
+    document.getElementById('searchBtn').addEventListener('click', function () {
+        const searchQuery = document.getElementById('searchInput').value;
+        if (searchQuery) {
+            const geocoder = new L.Control.Geocoder.Nominatim();
+            geocoder.geocode(searchQuery, function(results) {
+                if (results && results.length > 0) {
+                    const firstResult = results[0];
+                    const latLng = firstResult.center;
+                    map.setView(latLng, 13);  
+                    L.marker(latLng).addTo(map)
+                        .bindPopup('<b>' + firstResult.name + '</b>')
+                        .openPopup();
+                } else {
+                    alert('Location not found');
+                }
+            });
+        }
+    });
+</script>
+{% endblock %}

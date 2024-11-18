@@ -1,0 +1,5 @@
+{% extends "base.html"%}
+{% block content%}
+<h2>im so cool like what the hell actually</h2>
+<p>and i looove nuggies</p>
+{%endblock%}

@@ -1,0 +1,109 @@
+{% extends "adminBase.html"%}
+{% block content%}
+<body>
+<div class="container my-5">
+    <h2 class="text-center mb-4 fw-bold">Admin Dashboard</h2>
+
+    <!-- First Row -->
+    <div class="row mb-4">
+        <!-- General Statistics -->
+        <div class="col-md-8">
+            <div class="card shadow-sm h-100">
+                <div class="card-body">
+                    <h5 class="card-title">General Statistics</h5>
+                    <div class="row">
+                        <!-- Text Section -->
+                        <div class="col-md-4 d-flex flex-column justify-content-center">
+                            <p class="card-text text-muted">Overview of key metrics:</p>
+                            <p class="mb-0"><strong>Total Devices:</strong> 120</p>
+                            <p class="mb-0"><strong>Active Farms:</strong> 25</p>
+                            <p><strong>Power Usage:</strong> 3500W</p>
+                        </div>
+                        <!-- Graph Section -->
+                        <div class="col-md-8 general-stats-graph">
+                            <img src="https://via.placeholder.com/600x300" alt="Graph showing general statistics">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Major Alerts -->
+        <div class="col-md-4">
+            <div class="card shadow-sm h-100 alert-box bg-warning">
+                <div class="card-body">
+                    <h5 class="card-title">Major Alerts</h5>
+                    <p class="card-text">Critical issues requiring attention:</p>
+                    <div class="container text-center">
+                        <div class="row">
+                            <div class="col">
+                                <div
+                                        class="alert-card alert alert-warning"
+                                        onclick="showDetails('Water Shortage Alert', 'Due to unexpected issues with the local water supply, please minimize water usage in tower 2 today. We are working to resolve the issue promptly.', 'November 31, 2024')"
+                                >
+                                    <h5 class="alert-heading">Water Shortage Alert</h5>
+                                    <p class="mb-0"><small>Posted on November 31, 2024</small></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div
+                                        class="alert-card alert alert-danger"
+                                        onclick="showDetails('Severe Weather Warning', 'A winter storm is expected in the area over the next 24 hours. Secure all farm equipment and shelter delicate plants to prevent damage.', 'December 18, 2024')"
+                                >
+                                    <h5 class="alert-heading">Severe Weather Warning</h5>
+                                    <p class="mb-0"><small>Posted on December 18, 2024</small></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div
+                                        class="alert-card alert alert-info"
+                                        onclick="showDetails('System Maintenance', 'We will be performing scheduled maintenance on our web platform from 10:00 PM to 12:00 AM tonight. During this time, some features may be unavailable.', 'December 25, 2024')"
+                                >
+                                    <h5 class="alert-heading">System Maintenance</h5>
+                                    <p class="mb-0"><small>Posted on December 25, 2024</small></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <h3 class="text-left mb-4 fw-bold">Towers</h3>
+    <!-- Second Row -->
+    <div class="row g-3">
+        <div class="col-md-4">
+            <div class="card shadow-sm small-height">
+                <div class="card-body">
+                    <h6 class="card-title">Container 1</h6>
+                    <p class="card-text">Minimal info for container 1.</p>
+                    <p><strong>Data Point:</strong> 42</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card shadow-sm small-height">
+                <div class="card-body">
+                    <h6 class="card-title">Container 2</h6>
+                    <p class="card-text">Minimal info for container 2.</p>
+                    <p><strong>Data Point:</strong> 87</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card shadow-sm small-height">
+                <div class="card-body">
+                    <h6 class="card-title">Container 3</h6>
+                    <p class="card-text">Minimal info for container 3.</p>
+                    <p><strong>Data Point:</strong> 19</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{%endblock%}

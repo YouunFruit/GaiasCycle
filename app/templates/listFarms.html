@@ -1,0 +1,29 @@
+{% extends "base.html"%}
+{% block content%}
+    <div class="container">
+        <h2 class="text-center fw-bold mb-4">Farm List</h2>
+        <div class="table-container">
+            <table class="table table-bordered table-striped">
+                <thead class="table-dark">
+                <tr>
+                    <th>Farm ID</th>
+                    <th>Farm Name</th>
+                    <th>Location</th>
+                    <th>Size (acres)</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Green Acres</td>
+                    <td>California</td>
+                    <td>100</td>
+                    <td><button class="btn btn-sm">Edit</button> <button class="btn btn-sm btn-danger">Delete</button></td>
+                </tr>
+                </tbody>
+            </table>
+            <a href="addFarm.html" class="btn btn-success mt-3">Add New Farm</a>
+        </div>
+    </div>
+{%endblock%}
