@@ -12,11 +12,31 @@
 <body>
 <div class="navbar navbar-dark bg-dark ">
     <a href="/" class="logo">GaiaCycle</a>
-    <a href="/admin" class="btn btn-primary " tabindex="-1" role="button" >Admin Page</a>
+    <a href="/" class="btn btn-primary " tabindex="-1" role="button" >user Page</a>
     <div class="navbar-menu">
         <a href="/admin">Dashboard</a>
-        <a href="/statistics">Tower Stats</a>
-        <a href="/updates">Alerts</a>
+        <a href="/admin/statistics">Tower Stats</a>
+        <a href="/admin/updates">Alerts</a>
+
+        <div class="dropdown">
+            <a href="#" class="dropdown-toggle">Add</a>
+            <div class="dropdown-menu">
+                <a href="/admin/addDevice">Device</a>
+                <a href="/admin/addFarm">Farm</a>
+                <a href="/admin/addUser">User</a>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <a href="#" class="dropdown-toggle">List</a>
+            <div class="dropdown-menu">
+                <a href="/admin/listDevices">Device</a>
+                <a href="/admin/listFarms">Farm</a>
+                <a href="/admin/listUsers">User</a>
+                <a href="/admin/listInventory">Inventory</a>
+            </div>
+        </div>
+    </div>
 
 
         <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
