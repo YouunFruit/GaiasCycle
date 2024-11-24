@@ -108,24 +108,6 @@
     </p>
 </section>
 
-<!-- Footer Section -->
-<div id="footer-placeholder"></div>
-
-<!-- Footer Script -->
-<script>
-    fetch('./footer.html')
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok ' + response.statusText);
-            }
-            return response.text();
-        })
-        .then(data => {
-            document.getElementById('footer-placeholder').innerHTML = data;
-        })
-        .catch(error => console.error('Error loading footer:', error));
-</script>
-
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
     const ctx = document.getElementById('sustainabilityGraph').getContext('2d');

@@ -1,16 +1,15 @@
 {% extends "base.html"%}
 {% block content%}
     <section class="mt-0 mb-0">
-        <div class="image-gradient vh-100 d-flex align-items-end justify-content-center text-center">
+        <div class="image-gradient vh-100 d-flex align-items-center justify-content-center text-center">
             <div class="text-white mb-4">
                 <h1 class="fw-bold display-1">Gaya's Cycle</h1>
-                <div class="d-flex justify-content-between fs-5 fw-lighter mt-4">
-                    <p class="transparent">BE PART OF THE GLOBAL SHIFT TOWARDS CLEAN, SUSTAINABLE ENERGY RECOURCES.</p>
-                    <div class="d-flex align-items-center">
-                        <a href="#introduction" class="text-white text-decoration-none">Explore more</a>
+                <div class="d-flex flex-column align-items-center fs-5 fw-lighter mt-4">
+                    <p class="transparent">BE PART OF THE GLOBAL SHIFT TOWARDS CLEAN, SUSTAINABLE FOOD RESOURCES.</p>
+                    <a href="#registration" class="text-decoration-none display-6 green h2 btn btn-success">
+                        Explore now
                         <i class="fas fa-arrow-down ms-2"></i>
-                    </div>
-
+                    </a>
                 </div>
             </div>
         </div>
@@ -100,67 +99,86 @@
     </section>
 
     <!-- Technologies Section -->
+    <script>
+        function changeImage(newImage) {
+            document.getElementById('techImage').src = newImage;
+        }
+    </script>
+
+    <style>
+        .pointer{
+            cursor: pointer;
+        }
+    </style>
+    
+    <!-- Inside your HTML -->
     <section class="container mt-5">
         <div class="header mb-5">
             <div class="d-flex justify-content-between border-bottom my-4 text-monospace">
-                <p >Technology</p>
+                <p>Technology</p>
             </div>
-
             <h1 class="text-right">Powered by <br> <span class="fw-bolder underline">next-gen</span> Technologies</h1>
         </div>
-
+    
         <div class="row d-flex align-items-stretch">
             <div class="col-md-6 mb-5">
-                <img src="https://plus.unsplash.com/premium_photo-1663076306950-f6602c629ff4?q=80&w=3357&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                     alt="" class="img-fluid rounded" style="object-fit:cover; height: 100%; width: 100%;">
+                <img id="techImage"
+                    src="https://plus.unsplash.com/premium_photo-1663076306950-f6602c629ff4?q=80&w=3357&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                    alt="" class="img-fluid rounded" style="object-fit:cover; height: 100%; width: 100%;">
             </div>
-            <!-- Tech tiles -->
+    
             <div class="col-md-6">
                 <div class="row">
                     <div class="col-md-6 mb-4">
                         <div class="tile border-top border-dark p-4 h-100 d-flex flex-column justify-content-between"
-                             style="height: 100%;">
+                            style="height: 100%;">
                             <div class="pb-5">
                                 <h5>Artificial Intelligence</h5>
                                 <i class="fas fa-robot fs-1"></i>
                             </div>
-                            <a href="#" class="text-black text-decoration-none fw-lighte">[VIEW DETAILS]</a>
+                            <p class="pointer text-black text-decoration-none fw-light"
+                                onclick="changeImage('https://images.unsplash.com/photo-1655393001768-d946c97d6fd1?q=80&w=1776&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')">[VIEW DETAILS]</a>
                         </div>
                     </div>
+    
                     <div class="col-md-6 mb-4">
                         <div class="tile border-top border-dark p-4 h-100 d-flex flex-column justify-content-between"
-                             style="height: 100%;">
+                            style="height: 100%;">
                             <div class="pb-5">
                                 <h5>Vertical Farming</h5>
                                 <i class="fas fa-tree fs-1"></i>
                             </div>
-                            <a href="#" class="text-black text-decoration-none fw-lighte">[VIEW DETAILS]</a>
+                            <p class="pointer text-black text-decoration-none fw-light"
+                                onclick="changeImage('https://upload.wikimedia.org/wikipedia/commons/1/10/Hydroponic_vertical_farm.jpg')">[VIEW DETAILS]</a>
                         </div>
                     </div>
+
                     <div class="col-md-6 mb-4">
-                        <div class="tile border-top border-dark p-4 h-100 d-flex flex-column justify-content-between"
-                             style="height: 100%;">
+                        <div class="tile border-top border-dark p-4 h-100 d-flex flex-column justify-content-between" style="height: 100%;">
                             <div class="pb-5">
                                 <h5>IoT Connectivity</h5>
                                 <i class="fas fa-wifi fs-1"></i>
                             </div>
-                            <a href="#" class="text-black text-decoration-none fw-lighte">[VIEW DETAILS]</a>
+                            <p class="pointer text-black text-decoration-none fw-light"
+                                onclick="changeImage('https://dri.es/files/cache/blog/esp32-s3-with-sht41-1280w.jpg')">[VIEW DETAILS]</a>
                         </div>
                     </div>
+
                     <div class="col-md-6 mb-4">
-                        <div class="tile p-4 h-100 d-flex flex-column justify-content-between text-white rounded bg-dark"
-                             style="height: 100%;">
+                        <div class="tile border-top border-dark p-4 h-100 d-flex flex-column justify-content-between" style="height: 100%;">
                             <div class="pb-5">
-                                <h5 >LED Lights</h5>
+                                <h5>LED Lighting</h5>
                                 <i class="fas fa-sun fs-1"></i>
                             </div>
-                            <a href="#" class="text-decoration-none text-white fw-lighter">[VIEW DETAILS]</a>
+                            <p class="pointer text-black text-decoration-none fw-light"
+                                onclick="changeImage('https://upload.wikimedia.org/wikipedia/commons/8/81/Aspect_Black_20W_Growlight_over_Bonsai.jpg')">[VIEW DETAILS]</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
 
     <!-- Process Section -->
     <section class="container mt-5">
@@ -170,38 +188,62 @@
             </div>
         </div>
 
-        <div class="row">
-            <div class="col-md-3 text-center">
+        <style>
+            .custom-row {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+        
+            .custom-row .col-sm-2 img {
+                height: 100%;
+                width: auto;
+            }
+        </style>
+        
+        <div class="custom-row">
+            <div class="col-sm-2 text-center">
                 <i class="fas fa-seedling fs-2 mb-2"></i>
                 <h5 class="mb-0">Planting</h5>
                 <p class="fw-light">Step ONE</p>
                 <p>Use Gaia's smart tech to start planting.</p>
             </div>
-            <div class="col-md-3 text-center">
+            <div class="col-sm-2 text-center">
                 <i class="fas fa-satellite-dish fs-2 mb-2"></i>
                 <h5 class="mb-0">Monitor</h5>
                 <p class="fw-light">Step TWO</p>
                 <p>Advanced sensors to monitor growth.</p>
             </div>
-            <div class="col-md-3 text-center">
+            <div class="col-sm-2 text-center">
                 <i class="fas fa-chart-line fs-2 mb-2"></i>
                 <h5 class="mb-0">Analyze</h5>
                 <p class="fw-light">Step THREE</p>
                 <p>Data-driven analysis for best practices.</p>
             </div>
-            <div class="col-md-3 text-center">
+            <div class="col-sm-2 text-center">
                 <i class="fas fa-leaf fs-2 mb-2"></i>
                 <h5 class="mb-0">Harvest</h5>
                 <p class="fw-light">Step FOUR</p>
                 <p>Sustainable harvesting with minimal CO<small>2</small>.</p>
             </div>
+            <div class="col-sm-2 text-center">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/c/c7/Sunflower_growing_time_lapse.gif" alt="Plant grow"
+                    class="img-fluid rounded shadow">
+            </div>
         </div>
+
+
     </section>
 
     <!-- Call to Action Section -->
-    <section id="contribute" class="container-fluid p-5 text-center" style="margin-bottom: 5rem !important;">
+    <section id="contribute" class="container p-5 text-center" style="margin-bottom: 5rem !important;">
         <h2 class="fw-bold">Join <span class="underline">Gaia's Cycle</span> Community</h2>
-        <p>Take the first step towards eco-friendly farming today.</p>
-        <a href="signUp.html" class="btn btn-success">Sign Up Now</a>
+        <p>Subscribe to our newsletter for the latest updates on eco-friendly farming.</p>
+        <form action="subscribe.html" method="post" class="d-flex flex-column align-items-center">
+            <div class="mb-3 w-50">
+                <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
+            </div>
+            <button type="submit" class="btn btn-success">Subscribe Now</button>
+        </form>
     </section>
 {%endblock%}

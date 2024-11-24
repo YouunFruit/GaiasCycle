@@ -45,7 +45,6 @@ async def read_root(req:Request):
 async def read_root(req:Request):
     return templates.TemplateResponse("listFarms.html",{"request":req})
 
-
 @app.get("/admin/statistics", response_class=HTMLResponse)
 async def read_root(req:Request):
     return templates.TemplateResponse("statistics.html",{"request":req})
@@ -54,9 +53,9 @@ async def read_root(req:Request):
 async def read_root(req:Request):
     return templates.TemplateResponse("listInventory.html",{"request":req})
 
-@app.get("/signUp", response_class=HTMLResponse)
-async def read_root(req:Request):
-    return templates.TemplateResponse("signUp.html",{"request":req})
+# @app.get("/signUp", response_class=HTMLResponse)
+# async def read_root(req:Request):
+#     return templates.TemplateResponse("signUp.html",{"request":req})
 
 @app.get("/tutorial", response_class=HTMLResponse)
 async def read_root(req:Request):
@@ -70,9 +69,9 @@ async def read_root(req:Request):
 async def read_root(req:Request):
     return templates.TemplateResponse("listUsers.html",{"request":req})
 
-@app.get("/login", response_class=HTMLResponse)
-async def read_root(req:Request):
-    return templates.TemplateResponse("logIn.html",{"request":req})
+# @app.get("/login", response_class=HTMLResponse)
+# async def read_root(req:Request):
+#     return templates.TemplateResponse("logIn.html",{"request":req})
 
 @app.get("/admin", response_class=HTMLResponse)
 async def read_root(req:Request):
