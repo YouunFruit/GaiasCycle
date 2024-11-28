@@ -1,30 +1,73 @@
 # Setup
-## Dependencies
->add list of dependcies and purpose
+
+To setup and run our web app locally, follow this guide.
 
 
-## To Run
-### For Mac
+**Clone the Github**
+    
+    insert code for cloning github
 
-1. python3 venv myenv
+### Setup Virtual Environment
 
-- source (enviroment name)/bin/active
+---
 
-- cd app
+**Create the virtual Environment**
+
+ *For Mac and windows*
+
+
+    python3 venv (environment name)
+
+
+
+
+**Activate it**
+
+
+*For Mac*
+
+
+    source (enviroment name)/bin/activate
+
+*For Windows*
+
+    venv\Scripts\Activate.ps1
+
+
 
 -  uvicorn main:app --reload
-### For Windows
-1. venv\Scripts\Activate.ps1
-- cd app
-- uvicorn main:app --reload
+
+Activates it
+
+    
 
 
-## Installing Dependancies
-Make sure you install within your virtual environment
+`code`
 
-- Directory Gaiacycle
-- pip install -r requirements.txt
+## Installing Dependencies
 
-# mkdocs activation
+All the required dependencies are listed in *requirements.txt*. 
+
+    fastapi
+    jinja2
+    uvicorn
+    mkdocs-material
+*Explanation of Dependencies found in build*
+
+Make sure you are in your venv before running this code and installing:
+
+    pip install -r requirements.txt
+
+
+## Server Activation
+Using Uvicorn, we are able to create a template based website. 
+
+Activate uvicorn using the following.Make sure you run this in the *app* directory
+
+    uvicorn main:app --reload
+
+
+
+## mkdocs activation
 - activate v. env
 - mkdocs serve --dev-addr 127.0.0.1:5000 

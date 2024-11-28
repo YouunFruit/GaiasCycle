@@ -41,7 +41,9 @@ copyright: Copyright &copy; 2024 XU Exponential University of Applied Science
 nav:
  - Home: index.md
  - Setup: setup.md
- - Website: website.md
+ - Website:
+    - User Page: userpage.md
+    - Admin Page: adminpage.md
  - API: api.md
  - Our Build: build.md
  - Projects: pro.md
