@@ -1,4 +1,4 @@
 # API Documentation
 ```sql
-SELECT ( FROM )
+SELECT ( FROM nnnn)
 ```
