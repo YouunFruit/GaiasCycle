@@ -1,3 +1,87 @@
-site_name: My Docs
+site_name: Gaia's Cycle
+
 theme:
-  name: material
+ name: material
+ palette:
+  # Palette toggle for light mode
+  - scheme: default
+    toggle:
+     icon: material/weather-night
+     name: Switch to dark mode
+
+  # Palette toggle for dark mode
+  - scheme: slate
+    toggle:
+     icon: material/weather-sunny
+     name: Switch to light mode
+ font:
+  text: Roboto
+  code: Roboto Mono
+ features:
+  - navigation.tabs
+  - navigation.expand
+  - content.code.copy
+  - content.code.annotate
+  - navigation.sections
+  - navigation.indexes
+  - navigation.path
+  - navigation.top
+  - navigation.instant
+extra:
+ generator: false
+ navigation:
+  previous: true
+  next: true
+ social:
+  - icon: fontawesome/brands/github
+    link: https://github.com/MarieBelle88/GaiasCycle
+  - icon: fontawesome/brands/linkedin
+    link: https://www.linkedin.com/in/bbaheer/
+copyright: Copyright &copy; 2024 XU Exponential University of Applied Science
+nav:
+ - Home: index.md
+ - Programs: pr.md
+ - Projects: pro.md
+ - Research: re.md
+ - Guide:
+    - Getting Started: getting-started.md
+    - Advanced Topics: advanced-topics.md
+extra_css:
+ - stylesheets/extra.css
+
+markdown_extensions:
+ - pymdownx.arithmatex:
+    generic: true
+ - pymdownx.tabbed:
+    alternate_style: true
+ - pymdownx.superfences:
+    custom_fences:
+     - name: mermaid
+       class: mermaid
+       format: !!python/name:pymdownx.superfences.fence_code_format
+ - pymdownx.highlight:
+    anchor_linenums: true
+    line_spans: __span
+    pygments_lang_class: true
+ - pymdownx.inlinehilite
+ - pymdownx.snippets
+ - pymdownx.superfences
+ - pymdownx.details
+ - pymdownx.critic
+ - pymdownx.caret
+ - pymdownx.keys
+ - pymdownx.mark
+ - pymdownx.tilde
+ - admonition
+ - attr_list
+ - md_in_html
+ - tables
+ - pymdownx.emoji:
+    emoji_index: !!python/name:material.extensions.emoji.twemoji
+    emoji_generator: !!python/name:material.extensions.emoji.to_svg
+
+extra_javascript:
+ - javascripts/mathjax.js
+ - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+
+repo_url: https://github.com/MarieBelle88/GaiasCycle

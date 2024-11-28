@@ -17,3 +17,7 @@ Make sure you install within your virtual environment
 
 - Directory Gaiacycle
 - pip install -r requirements.txt
+
+# mkdocs activation
+- activate v. env
+- mkdocs serve --dev-addr 127.0.0.1:5000 
