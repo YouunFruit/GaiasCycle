@@ -19,3 +19,4 @@ Use Git to clone the project repository. Run the following command in your termi
 
 ```bash
 git clone <repository-url>
+```
