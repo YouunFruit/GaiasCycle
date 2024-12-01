@@ -1,3 +1,15 @@
+# Welcome to Gaia Cycle Documentation
+
+<!-- 
+Include:
+1. Brief overview of the project:
+   - What it is.
+   - Who it’s for.
+   - Key features and benefits.
+2. Links to major sections of the documentation.
+3. A simple diagram or image to showcase the project at a glance.
+-->
+
 # Welcome to MkDocs
 
 >explains our webapp purpose, 
