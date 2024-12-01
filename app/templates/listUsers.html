@@ -1,195 +1,119 @@
-{% extends "adminBase.html"%}
-{% block content%}
-    <div class="container">
-        <div class="search-bar">
-            <input
-                    type="text"
-                    class="form-control"
-                    id="searchInput"
-                    placeholder="Search for users..."
-                    onkeyup="filterUsers()"
-            />
-        </div>
+{% extends "adminBase.html" %}
+{% block content %}
+<div class="container mt-4">
+    <h2 class="mb-4 text-center">Registered Users</h2>
+
+    <!-- Search and Sort Bar -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <input
+                type="text"
+                class="form-control w-50"
+                id="searchInput"
+                placeholder="Search for users..."
+                onkeyup="filterUsers()"
+        />
+        <select class="form-select w-25" id="sortOptions" onchange="sortUsers()">
+            <option value="name">Sort by Name</option>
+            <option value="role">Sort by Role</option>
+        </select>
     </div>
 
-    <div class="container" id="userList">
-        <div
-                class="card user-card d-flex flex-row align-items-center user-item"
-                data-name="Iker Garcia Floro"
-        >
-            <img
-                    src="https://avatars.githubusercontent.com/u/68996614?v=4"
-                    alt="Iker"
-                    class="user-image"
-            />
-            <div class="user-details">
-                <h5 class="card-title">Iker Garcia Floro</h5>
-                <p class="card-text">Email: i.garcia@student.xu-university.de</p>
-                <p class="card-text">Role: Student, Developer</p>
+    <div class="container text-center">
+        <div class="row row-cols-3" id="userList">
+            <div class="col-md-6 col-lg-4 mb-4 user-item" data-name="Iker Garcia Floro" data-role="Student, Developer">
+                <div class="card h-100 shadow-sm">
+                    <img
+                            src="https://avatars.githubusercontent.com/u/68996614?v=4"
+                            alt="Iker"
+                            class="card-img-top user-image"
+                    />
+                    <div class="card-body">
+                        <h5 class="card-title">Iker Garcia Floro</h5>
+                        <p class="card-text"><strong>Email:</strong> i.garcia@student.xu-university.de</p>
+                        <p class="card-text"><strong>Role:</strong> Student, Developer</p>
+                    </div>
+                </div>
             </div>
-        </div>
-
-        <div
-                class="card user-card d-flex flex-row align-items-center user-item"
-                data-name="Balita Rabezanahary"
-        >
-            <img
-                    src="https://avatars.githubusercontent.com/u/150338044?v=4"
-                    alt="Balita"
-                    class="user-image"
-            />
-            <div class="user-details">
-                <h5 class="card-title">Balita Rabezanahary</h5>
-                <p class="card-text">Email:b.raabenzanahary@student.xu-university</p>
-                <p class="card-text">Role: Student, Developer</p>
+            <div class="col-md-6 col-lg-4 mb-4 user-item" data-name="Balita Rabezanahary" data-role="Student, Developer">
+                <div class="card h-100 shadow-sm">
+                    <img
+                            src="https://avatars.githubusercontent.com/u/150338044?v=4"
+                            alt="Balita"
+                            class="card-img-top user-image"
+                    />
+                    <div class="card-body">
+                        <h5 class="card-title">Balita Rabezanahary</h5>
+                        <p class="card-text"><strong>Email:</strong> b.rabenzanahary@student.xu-university</p>
+                        <p class="card-text"><strong>Role:</strong> Student, Developer</p>
+                    </div>
+                </div>
             </div>
-        </div>
-
-        <div
-                class="card user-card d-flex flex-row align-items-center user-item"
-                data-name="Martin Mirchevski"
-        >
-            <img
-                    src="https://avatars.githubusercontent.com/u/147392657?v=4"
-                    alt="Martin"
-                    class="user-image"
-            />
-            <div class="user-details">
-                <h5 class="card-title">Martin Mirchevski</h5>
-                <p class="card-text">Email:m.mirchevski@student.xu-university</p>
-                <p class="card-text">Role: Student, Developer</p>
+            <div class="col-md-6 col-lg-4 mb-4 user-item" data-name="Iker Garcia Floro" data-role="Student, Developer">
+                <div class="card h-100 shadow-sm">
+                    <img
+                            src="https://avatars.githubusercontent.com/u/68996614?v=4"
+                            alt="Iker"
+                            class="card-img-top user-image"
+                    />
+                    <div class="card-body">
+                        <h5 class="card-title">Iker Garcia Floro</h5>
+                        <p class="card-text"><strong>Email:</strong> i.garcia@student.xu-university.de</p>
+                        <p class="card-text"><strong>Role:</strong> Student, Developer</p>
+                    </div>
+                </div>
             </div>
-        </div>
-
-        <div
-                class="card user-card d-flex flex-row align-items-center user-item"
-                data-name="Marie Belle Khaddage"
-        >
-            <img
-                    src="https://avatars.githubusercontent.com/u/137484339?v=4"
-                    alt="Marie"
-                    class="user-image"
-            />
-            <div class="user-details">
-                <h5 class="card-title">Marie Belle Khaddage</h5>
-                <p class="card-text">Email:m.khaddage@student.xu-university.de</p>
-                <p class="card-text">Role: Student, developer</p>
-            </div>
-        </div>
-
-        <div
-                class="card user-card d-flex flex-row align-items-center user-item"
-                data-name="Rishi Rathakrishnan"
-        >
-            <img
-                    src="https://tse3.mm.bing.net/th?id=OIP.qw42y3S9KyR2Wn9JVAWArgHaHa&pid=Api&P=0&h=220"
-                    alt="Rishi"
-                    class="user-image"
-            />
-            <div class="user-details">
-                <h5 class="card-title">Rishi Rathakrishnan</h5>
-                <p class="card-text">
-                    Email: r.rathakrishnan@student.xu-university.de
-                </p>
-                <p class="card-text">Role: Student, Developer</p>
-            </div>
-        </div>
-
-        <div
-                class="card user-card d-flex flex-row align-items-center user-item"
-                data-name="Samuel Toochukwu"
-        >
-            <img
-                    src="https://vectorified.com/images/no-profile-picture-icon-24.jpg"
-                    alt="Samuel"
-                    class="user-image"
-            />
-            <div class="user-details">
-                <h5 class="card-title">Samuel Toochukwu</h5>
-                <p class="card-text">Email:s.apka@student.xu-university.de</p>
-                <p class="card-text">Role: Student, Developer</p>
-            </div>
-        </div>
-
-        <div
-                class="card user-card d-flex flex-row align-items-center user-item"
-                data-name="Baseer A. Baheeer"
-        >
-            <img
-                    src="https://i1.rgstatic.net/ii/profile.image/1146667550158848-1650398256728_Q512/Baseer-Baheer.jpg"
-                    alt="Baheer"
-                    class="user-image"
-            />
-            <div class="user-details">
-                <h5 class="card-title">Baseer A. Baheeer</h5>
-                <p class="card-text">Email:b.baheer@student.xu-university.de</p>
-                <p class="card-text">Role: Proffesor, Lead Developer</p>
-            </div>
-        </div>
-
-        <div
-                class="card user-card d-flex flex-row align-items-center user-item"
-                data-name="Miriam Salzmann"
-        >
-            <img
-                    src="https://www.f6s.com/content-resource/profiles/3558198_th1.jpg"
-                    alt="Miriam "
-                    class="user-image"
-            />
-            <div class="user-details">
-                <h5 class="card-title">Miriam Salzmann</h5>
-                <p class="card-text">Email:MiriamSalzmann@gmail.com</p>
-                <p class="card-text">Role: CEO, Gaia's cycle</p>
-            </div>
-        </div>
-
-        <div
-                class="card user-card d-flex flex-row align-items-center user-item"
-                data-name="James Beckerman"
-        >
-            <img
-                    src="https://vectorified.com/images/no-profile-picture-icon-6.png"
-                    alt="James "
-                    class="user-image"
-            />
-            <div class="user-details">
-                <h5 class="card-title">James Beckerman</h5>
-                <p class="card-text">Email:Jamesbeckerman@gmail.com</p>
-                <p class="card-text">Role: Employee, Associate</p>
-            </div>
-        </div>
-
-        <div
-                class="card user-card d-flex flex-row align-items-center user-item"
-                data-name="Peter Anderwood"
-        >
-            <img
-                    src="https://vectorified.com/images/no-profile-picture-icon-24.jpg"
-                    alt="peter"
-                    class="user-image"
-            />
-            <div class="user-details">
-                <h5 class="card-title">Peter Anderwood</h5>
-                <p class="card-text">Email:peterander2@gmail.com</p>
-                <p class="card-text">Role: Costumer, Partner</p>
+            <div class="col-md-6 col-lg-4 mb-4 user-item" data-name="Iker Garcia Floro" data-role="Student, Developer">
+                <div class="card h-100 shadow-sm">
+                    <img
+                            src="https://avatars.githubusercontent.com/u/68996614?v=4"
+                            alt="Iker"
+                            class="card-img-top user-image"
+                    />
+                    <div class="card-body">
+                        <h5 class="card-title">Iker Garcia Floro</h5>
+                        <p class="card-text"><strong>Email:</strong> i.garcia@student.xu-university.de</p>
+                        <p class="card-text"><strong>Role:</strong> Student, Developer</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <script>
-        // Function to filter users based on search input
-        function filterUsers() {
-            const input = document.getElementById("searchInput");
-            const filter = input.value.toLowerCase();
-            const userItems = document.getElementsByClassName("user-item");
+    <!-- User List -->
+            <!-- Example with dynamic placeholder content -->
+    </div>
+</div>
 
-            for (let i = 0; i < userItems.length; i++) {
-                const userName = userItems[i].getAttribute("data-name").toLowerCase();
-                if (userName.includes(filter)) {
-                    userItems[i].style.display = ""; // Show item
-                } else {
-                    userItems[i].style.display = "none"; // Hide item
-                }
+<script>
+    // Function to filter users based on search input
+    function filterUsers() {
+        const input = document.getElementById("searchInput").value.toLowerCase();
+        const userItems = document.getElementsByClassName("user-item");
+
+        for (let user of userItems) {
+            const name = user.getAttribute("data-name").toLowerCase();
+            if (name.includes(input)) {
+                user.style.display = ""; // Show matching users
+            } else {
+                user.style.display = "none"; // Hide non-matching users
             }
         }
-    </script>
-{%endblock%}
+    }
+
+    // Function to sort users based on selected option
+    function sortUsers() {
+        const option = document.getElementById("sortOptions").value;
+        const userList = document.getElementById("userList");
+        const users = Array.from(userList.getElementsByClassName("user-item"));
+
+        const sortedUsers = users.sort((a, b) => {
+            const aValue = a.getAttribute(`data-${option}`).toLowerCase();
+            const bValue = b.getAttribute(`data-${option}`).toLowerCase();
+            return aValue.localeCompare(bValue);
+        });
+
+        // Clear and re-add sorted users
+        userList.innerHTML = "";
+        sortedUsers.forEach(user => userList.appendChild(user));
+    }
+</script>
+{% endblock %}

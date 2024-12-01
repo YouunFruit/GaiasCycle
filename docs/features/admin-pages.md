@@ -1,27 +1,49 @@
 # Dashboard Page Overview
 
-> so basically this page will guide and easily show our pages on the web app.
+> The dashboard serves as a centralized hub, offering users an intuitive way to navigate the web app and monitor key functionalities. This guide outlines the layout, features, and purpose of the dashboard page.
 
+The **dashboard page** is designed to streamline user interaction, providing quick access to critical metrics, data visualizations, and tools to enhance usability.
 
-The dashboard page is where users interact with the main features and access detailed information.
+---
 
 ## Pages and Their Purpose
 
-- **Dashboard Overview**: Displays key metrics and visual representations of data.
-- **Statistics Page**: Shows detailed analytics of system performance, user behavior, and other relevant metrics.
-- **Settings**: Allows users to modify their preferences and configurations.
+- **Dashboard Overview**:  
+  This section highlights key metrics such as total devices, active farms, and power usage. Visual data representations (e.g., graphs) provide a snapshot of system performance.
 
-## User Journey
+- **Statistics Page**:  
+  Focuses on detailed analytics, offering insights into system trends, user activity, and energy consumption. Interactive graphs and filters enable users to explore data across different time frames.
 
-This diagram illustrates the user journey on the dashboard page.
+- **Settings**:  
+  A customizable area where users can configure account preferences, manage notifications, and adjust system parameters.
 
-![Dashboard Journey](path-to-dashboard-graph.png)
+- **Inventory Management**:  
+  Users can view, categorize, and track all devices, farms, and towers in the system. This page includes search functionality for efficient navigation.
+
+---
+
+## Features and Functionalities
+
+### Key Metrics Overview
+The top section of the dashboard displays quick statistics:
+- Total number of devices connected.
+- Active farms currently operational.
+- Current power usage and trends over time.
+
+### Interactive Graphs
+The dashboard integrates dynamic graphs that update in real-time, showing:
+- Daily, weekly, and monthly trends in system performance.
+- Comparisons of power consumption across farms.
+
+### Collapsible Insights Table
+Users can toggle a detailed metrics table for an in-depth breakdown of performance statistics.
+
+---
 
 # Stats Page
 
-<!-- 
-Include:
-1. Features for data visualization.
-2. AI-generated analysis.
-3. Graphs and user interaction elements.
--->
+The **Statistics Page** complements the dashboard by focusing on data visualization and in-depth analysis.
+
+### Features:
+1. **Graphs**: Visual representations of data trends with options to filter by day, week, or month.
+2. **Data Overview**: A table that allows users to grasp a general idea of the data over their farm.  
