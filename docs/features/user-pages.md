@@ -3,7 +3,6 @@
 This section describes the general pages of the web app and their purposes. Each page is designed to provide users with essential information and access to basic functions.
 
 ---
----
 
 # Home Page
 
@@ -79,7 +78,6 @@ The **Home Page** uses a **clean, modern design** that prioritizes **accessibili
 This structure ensures that users have a welcoming, informative, and easy-to-navigate homepage, providing all the essentials to get started with Gaia's Cycle.
 
 ---
----
 
 # Contact Us Page
 
@@ -144,7 +142,6 @@ The **Contact Us** page provides a direct communication channel between users an
 - Consistent with Gaia's Cycle's branding, using its color palette and typography.
 - Designed to be mobile-friendly for accessibility across devices.
 
----
 ---
 
 # FAQ Page
