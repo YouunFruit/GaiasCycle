@@ -2,13 +2,14 @@
 
 This section describes the general pages of the web app and their purposes. Each page is designed to provide users with essential information and access to basic functions.
 
+---
+---
+
 # Home Page
 
 ## Purpose
 
 The **Home Page** serves as the central entry point for users. It provides an overview of Gaia's Cycle, offering easy access to key features and important updates. This page is designed to help users quickly navigate the app and begin their journey with Gaia's Cycle, whether they are new users or returning ones.
-
----
 
 ## Layout
 
@@ -34,8 +35,6 @@ The Home Page is divided into the following sections:
 
 5. **Footer**:
    - Contains links to the **Privacy Policy**, **Terms of Service**, **Support**, and **Social Media** channels. It ensures that users have easy access to essential legal and support pages.
-
----
 
 ## Functionality
 
@@ -78,6 +77,9 @@ The **Home Page** uses a **clean, modern design** that prioritizes **accessibili
 5. **Footer**: Includes links to Privacy Policy, Terms of Service, Support, and Social Media channels.
 
 This structure ensures that users have a welcoming, informative, and easy-to-navigate homepage, providing all the essentials to get started with Gaia's Cycle.
+
+---
+---
 
 # Contact Us Page
 
@@ -143,6 +145,8 @@ The **Contact Us** page provides a direct communication channel between users an
 - Designed to be mobile-friendly for accessibility across devices.
 
 ---
+---
+
 # FAQ Page
 
 ## Purpose
