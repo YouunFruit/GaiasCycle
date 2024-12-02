@@ -20,4 +20,6 @@ Make sure you install within your virtual environment
 
 # mkdocs activation
 - activate v. env
-- mkdocs serve --dev-addr 127.0.0.1:5000 
+- mkdocs serve --dev-addr 127.0.0.1:5000
+
+  # https://mariebelle88.github.io/GaiasCycle/
