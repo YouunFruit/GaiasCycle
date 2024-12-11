@@ -1,74 +1,69 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <main role="main">
 
-<!-- add hero section from (album example bootstrap) -->d
 
-      <!-- Marketing messaging and featurettes
-      ================================================== -->
-      <!-- Wrap the rest of the page in another container to center all the content. -->
 
-      <div class="container marketing">
+      <div class="container">
 
-        <!-- Three columns of text below the carousel -->
-        <div class="row">
-          <div class="col-lg-4">
-            <img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
-            <h2>Miriam Salzmann</h2>
-            <h3> Founder & CEO</h3>
-            <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-          </div><!-- /.col-lg-4 -->
-          <div class="col-lg-4">
-            <img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
-            <h2>Heading</h2>
-            <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
-            <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-          </div><!-- /.col-lg-4 -->
-          <div class="col-lg-4">
-            <img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
-            <h2>Heading</h2>
-            <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-            <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-          </div><!-- /.col-lg-4 -->
-        </div><!-- /.row -->
+        <section class="jumbotron text-center">
+          <div class="container">
+            <h1 class="jumbotron-heading">Gaia’s Cycle</h1>
+            <p class="lead text-muted">
+              Gaia’s Cycle has developed eco-friendly farming methods that contribute to significant CO₂ reductions.
+              By using renewable energy and optimizing resources, we have saved approximately
+              <strong>450 metric tons</strong> of CO₂ emissions in the past year compared to traditional farming methods.
+            </p>
+            <a href="/" class="btn btn-success btn-lg">
+              Learn more! <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
+        </section>
+
 
         <!-- START THE FEATURETTES -->
 
-        <hr class="featurette-divider">
 
-        <div class="row featurette">
-          <div class="col-md-7">
-            <h2 class="featurette-heading">Sustainable Impact Summary <!-- <span class="text-muted">It'll blow your mind.</span>--></h2>
-            <p class="lead">        Gaia’s Cycle has developed eco-friendly farming methods that contribute to significant CO₂ reductions. By using renewable energy and optimizing resources, we have saved approximately <strong>450 metric tons</strong> of CO₂ emissions in the past year compared to traditional farming methods.
-            </p>
-          </div>
-          <div class="col-md-5">
-            <img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
-          </div>
-        </div>
 
         <hr class="featurette-divider">
 
         <div class="row featurette">
           <div class="col-md-7 order-md-2">
-            <h2 class="featurette-heading">Oh yeah, it's that good. <span class="text-muted">See for yourself.</span></h2>
-            <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+            <h2 class="featurette-heading">Our Offerings <!-- <span class="text-muted">See for yourself.</span>--></h2>
+            <p class="lead">At Gaia's Cycle, we provide cutting-edge, sustainable urban farming solutions that empower individuals and businesses to grow food in urban environments. From vertical farming systems to energy-efficient greenhouses, we offer a variety of innovative products and services tailored to meet the growing demand for local, carbon-free food production.
           </div>
           <div class="col-md-5 order-md-1">
-            <img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
+            <img
+                    class="featurette-image img-fluid mx-auto"
+                    src="https://editverse.com/wp-content/smush-webp/2024/07/Vertical-Farming-The-Future-of-Urban-Agriculture-1024x585.jpg.webp"
+                    alt="Vertical Farming - The Future of Urban Agriculture"
+                    style="max-width: 100%; height: auto;">
           </div>
+
         </div>
 
         <hr class="featurette-divider">
 
         <div class="row featurette">
           <div class="col-md-7">
-            <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
-            <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+            <h2 class="featurette-heading">How We Do It? <!-- <span class="text-muted">It'll blow your mind.</span>--></h2>
+            <p class="lead">Our solutions integrate state-of-the-art technologies like AI-driven monitoring, vertical farming, and IoT connectivity. We use renewable energy sources such as solar panels and wind turbines, coupled with water and energy-saving techniques, to create a sustainable, self-sufficient farming ecosystem that reduces CO₂ emissions and maximizes resource efficiency.
+            </p>
           </div>
           <div class="col-md-5">
-            <img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
+            <img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" alt="Generic placeholder image"
+                 src= "https://bizinp.com/upload/post/9sezdryqresized-image_1727602800.png" >
+          </div>
+        </div>
+        <hr class="featurette-divider">
+
+        <div class="row featurette">
+          <div class="col-md-7 order-md-2">
+            <h2 class="featurette-heading">Why Us? </h2>
+            <p class="lead">Gaia’s Cycle stands out because of our commitment to both innovation and sustainability. Our team of experts combines technological know-how with a deep understanding of the environmental challenges we face. By choosing us, you are investing in a future where urban farming contributes to a healthier planet and local communities.</div>
+          <div class="col-md-5">
+            <img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" alt="Generic placeholder image"
+            src=" https://media.licdn.com/dms/image/D5612AQG8izt3-XESgA/article-cover_image-shrink_720_1280/0/1721452163276?e=2147483647&v=beta&t=7QVv3-5ABT6vhKjVX2IFXombk3Aa0pbOnXmL3jqBTXc">
           </div>
         </div>
 
@@ -79,20 +74,7 @@
       </div><!-- /.container -->
 
 
-      <!-- FOOTER -->
-      <footer class="container">
-      <p class="float-right"><a href="#">Back to top</a></p>
-      <p>&copy; 2017-2018 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
-    </footer>
-    </main>
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script>window.jQuery || document.write('<script src="dist/vendor/jquery-slim.min.js"><\/script>')</script>
-    <script src="/static/dist/vendor/popper.min.js"></script>
-    <script src="/static/dist/js/bootstrap.min.js"></script>
-    <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
-    <script src="/static/dist/vendor/holder.min.js"></script>
+
+
 {% endblock %}

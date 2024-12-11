@@ -1,0 +1,112 @@
+{% extends "adminBase.html"%}
+{% block content %}
+
+<body>
+<div class="container py-4">
+    <h1 class="mb-4 text-center">Statistics Page</h1>
+
+    <!-- Overview Cards -->
+    <div class="row mb-4">
+        <div class="col-md-4">
+            <div class="card text-center shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Total Devices</h5>
+                    <p class="card-text fs-2">120</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card text-center shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Active Farms</h5>
+                    <p class="card-text fs-2">25</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card text-center shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Total Power Usage</h5>
+                    <p class="card-text fs-2">3500W</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Graph Section -->
+    <div class="row mb-4">
+        <div class="col-md-6">
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    Power Usage Trends
+                </div>
+                <div class="card-body">
+                    <canvas id="powerUsageChart"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card shadow-sm">
+                <div class="card-header bg-success text-white">
+                    Device Status
+                </div>
+                <div class="card-body">
+                    <canvas id="deviceStatusChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Data Table -->
+    <div class="card shadow-sm mb-4">
+        <div class="card-header bg-secondary text-white d-flex justify-content-between align-items-center">
+            <span>Farm Data Overview</span>
+
+        </div>
+        <div class="collapse show" id="farmDataTable">
+            <div class="card-body">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Farm Name</th>
+                        <th>Devices</th>
+                        <th>Status</th>
+                        <th>Power Usage (W)</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Green Valley</td>
+                        <td>15</td>
+                        <td>Active</td>
+                        <td>1200</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Sunny Acres</td>
+                        <td>10</td>
+                        <td>Inactive</td>
+                        <td>800</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Urban Grow</td>
+                        <td>20</td>
+                        <td>Active</td>
+                        <td>1500</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+</body>
+
+
+{%endblock%}

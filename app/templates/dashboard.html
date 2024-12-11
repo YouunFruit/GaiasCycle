@@ -9,25 +9,85 @@
         <!-- General Statistics -->
         <div class="col-md-8 ">
             <div class="card shadow-sm h-100">
-                <div class="card-body">
-                    <h5 class="card-title">General Statistics</h5>
-                    <div class="container">
-                    <div class="row">
+                <div class="container py-4">
+                    <!-- Overview and Graph Section -->
+                    <div class="row align-items-center">
                         <!-- Text Section -->
-                        <div class="col-md-4 d-flex flex-column justify-content-center">
-                            <p class="card-text text-muted">Overview of key metrics:</p>
-                            <p class="mb-0"><strong>Total Devices:</strong> 120</p>
-                            <p class="mb-0"><strong>Active Farms:</strong> 25</p>
-                            <p><strong>Power Usage:</strong> 3500W</p>
-                            <button type="button" class="btn btn-primary">More Details</button>
-
+                        <div class="col-md-4">
+                            <div class="card p-3 shadow-sm">
+                                <h5 class="card-title text-center">Key Metrics</h5>
+                                <p class="text-muted">Overview of key metrics:</p>
+                                <p><strong>Total Devices:</strong> 120</p>
+                                <p><strong>Active Farms:</strong> 25</p>
+                                <p><strong>Power Usage:</strong> 3500W</p>
+                                <button type="button" class="btn btn-primary w-100">More Details</button>
+                            </div>
                         </div>
-                        <!-- Graph Section -->
-                        <div class="col-md-8 general-stats-graph img-fluid">
-                            <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.mdpi.com%2F2077-0472%2F10%2F12%2F646&psig=AOvVaw0mG04IxYU2UlLyNGkTiNdg&ust=1732833124146000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCPiZw8rI_YkDFQAAAAAdAAAAABAE" alt="Graph showing general statistics">
 
+                        <!-- Graph Section -->
+                        <div class="col-md-8">
+                            <div class="card shadow-sm">
+                                <img
+                                        src="https://via.placeholder.com/700x300"
+                                        alt="Graph showing general statistics"
+                                        class="card-img-top"
+                                />
+                                <div class="card-body text-center">
+                                    <p class="text-muted mb-0">Graph showing general statistics</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
+
+                    <!-- Collapsible Table Section -->
+                    <div class="mt-4">
+                        <button
+                                class="btn btn-secondary w-100"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#metricsTable"
+                                aria-expanded="false"
+                                aria-controls="metricsTable"
+                        >
+                            Toggle Metrics Table
+                        </button>
+                        <div class="collapse mt-3" id="metricsTable">
+                            <div class="card shadow-sm">
+                                <div class="card-body">
+                                    <table class="table table-bordered table-hover">
+                                        <thead class="table-dark">
+                                        <tr>
+                                            <th>Metric</th>
+                                            <th>Value</th>
+                                            <th>Unit</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>Total Devices</td>
+                                            <td>120</td>
+                                            <td>Units</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Active Farms</td>
+                                            <td>25</td>
+                                            <td>Farms</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Power Usage</td>
+                                            <td>3500</td>
+                                            <td>Watts</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Average Device Efficiency</td>
+                                            <td>89%</td>
+                                            <td>Percentage</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -63,6 +123,17 @@
                             </div>
                         </div>
                         <div class="row">
+                            <div class="col">
+                                <div
+                                        class="alert-card alert alert-info"
+                                        onclick="showDetails('System Maintenance', 'We will be performing scheduled maintenance on our web platform from 10:00 PM to 12:00 AM tonight. During this time, some features may be unavailable.', 'December 25, 2024')"
+                                >
+                                    <h5 class="alert-heading">System Maintenance</h5>
+                                    <p class="mb-0"><small>Posted on December 25, 2024</small></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row d-none">
                             <div class="col">
                                 <div
                                         class="alert-card alert alert-info"
@@ -110,6 +181,10 @@
             </div>
         </div>
     </div>
+
+
 </div>
+
+
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.2/dist/chart.umd.js" integrity="sha384-eI7PSr3L1XLISH8JdDII5YN/njoSsxfbrkCTnJrzXt+ENP5MOVBxD+l6sEG4zoLp" crossorigin="anonymous"></script>
 {%endblock%}
