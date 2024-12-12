@@ -1,4 +1,4 @@
-{% extends "adminBase.html"%}
+{% extends "adminBase.html" %}
 {% block content %}
 
 <div class="container mt-5">
@@ -13,7 +13,6 @@
             <option value="warnings">Warnings</option>
             <option value="tower">Tower</option>
         </select>
-
     </div>
 </div>
 
@@ -29,104 +28,213 @@
                     <p class="card-text"><strong>Status:</strong> Active</p>
                     <p class="card-text"><strong>Power Usage:</strong> 50W</p>
                     <p class="card-text"><strong>Tower:</strong> Tower A</p>
-                    <button class="btn btn-outline-success btn-sm mt-3" type="button" data-bs-toggle="collapse" data-bs-target="#deviceDetails1" aria-expanded="false" aria-controls="deviceDetails1">
-                        Show Details
-                        <span class="position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle">
-    <span class="visually-hidden">New alerts</span>
-  </span>
-                    </button>
-
-                    <div class="collapse mt-3" id="deviceDetails1">
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item"><strong>Operating Hours:</strong> 1200 hrs</li>
-                            <li class="list-group-item"><strong>Water Consumption:</strong> 500 L/day <span class="badge text-bg-danger">Danger</span>
-                            </li>
-                            <li class="list-group-item"><strong>Last Maintenance:</strong> 2023-10-20</li>
-                            <li class="list-group-item"><strong>Temperature Range:</strong> 10°C - 25°C</li>
-
-                        </ul>
-                    </div>
+                    <button class="btn btn-outline-success btn-sm mt-3" data-bs-toggle="modal" data-bs-target="#towerDetailsModal" onclick="showTowerDetails(1)">View Details</button>
+                    <button class="btn btn-outline-danger btn-sm mt-3" data-bs-toggle="modal" data-bs-target="#removeTowerModal" onclick="setRemoveTower(1, 'Tower A')">Remove</button>
                 </div>
             </div>
         </div>
+    </div>
 
-        <div class="col" data-device="Sensor" data-warning="warning" data-tower="Tower B">
-            <div class="card h-100 shadow-sm">
-                <div class="card-body">
-                    <h5 class="card-title">Device Name 2</h5>
-                    <p class="card-text"><strong>Type:</strong> Sensor</p>
-                    <p class="card-text"><strong>Status:</strong> Inactive</p>
-                    <p class="card-text"><strong>Power Usage:</strong> 220W <span class="badge bg-warning">Warning</span></p>
-                    <p class="card-text"><strong>Tower:</strong> Tower B</p>
-                    <button class="btn btn-outline-success btn-sm mt-3" type="button" data-bs-toggle="collapse" data-bs-target="#deviceDetails2" aria-expanded="false" aria-controls="deviceDetails2">
-                        Show Details
-                    </button>
-                    <button class="btn btn-outline btn-sm mt-3 ms-2" data-bs-toggle="modal"
-                            data-bs-target="#sensorModal">
-                        View Graph
-                    </button>
-                    <div class="collapse mt-3" id="deviceDetails2">
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item"><strong>Operating Hours:</strong> 800 hrs</li>
-                        </ul>
-                    </div>
+    <!-- Add Tower Button -->
+    <div class="d-flex justify-content-end mt-4">
+        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addTowerModal">Add Tower</button>
+    </div>
+
+    <!-- Add Tower Modal -->
+    <div class="modal fade" id="addTowerModal" tabindex="-1" aria-labelledby="addTowerModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addTowerModalLabel">Add New Tower</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-            </div>
-        </div>
-
-        <div class="modal fade" id="sensorModal" tabindex="-1" aria-labelledby="sensorModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="sensorModalLabel">Sensor Data Over Time</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <!-- Graph Image -->
-                        <img src="https://www.quanthub.com/wp-content/uploads/line_chart_temp.png" alt="Sensor Data Graph" class="img-fluid mb-3">
-                        <!-- Additional Data -->
-                        <div class="d-flex justify-content-between">
-                            <div>
-                                <p><strong>Average Humidity:</strong> 60%</p>
-                                <p><strong>Temperature Range:</strong> 10°C - 30°C</p>
-                            </div>
-                            <div>
-                                <p><strong>Last Maintenance:</strong> 2023-09-15</p>
-                                <p><strong>Total Operating Hours:</strong> 800 hrs</p>
-                            </div>
+                <div class="modal-body">
+                    <form id="addTowerForm">
+                        <div class="mb-3">
+                            <label for="towerName" class="form-label">Tower Name</label>
+                            <input type="text" class="form-control" id="towerName" required>
                         </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    </div>
+                        <div class="mb-3">
+                            <label for="towerLocation" class="form-label">Location</label>
+                            <input type="text" class="form-control" id="towerLocation" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="towerSlots" class="form-label">Number of Slots</label>
+                            <input type="number" class="form-control" id="towerSlots" required>
+                        </div>
+                        <button type="submit" class="btn btn-success">Add Tower</button>
+                    </form>
                 </div>
             </div>
         </div>
+    </div>
 
-        <div class="col" data-device="Fertilizer Spreader" data-warning="maintenance" data-tower="Tower A">
-            <div class="card h-100 shadow-sm">
-                <div class="card-body">
-                    <h5 class="card-title">Device Name 3</h5>
-                    <p class="card-text"><strong>Type:</strong> Fertilizer Spreader</p>
-                    <p class="card-text"><strong>Status:</strong> Inactive <span class="badge bg-info">Maintenance Required</span></p>
-                    <p class="card-text"><strong>Power Usage:</strong> 45W</p>
-                    <p class="card-text"><strong>Tower:</strong> Tower A</p>
-                    <button class="btn btn-outline-success btn-sm mt-3" type="button" data-bs-toggle="collapse" data-bs-target="#deviceDetails3" aria-expanded="false" aria-controls="deviceDetails3">
-                        Show Details
-                    </button>
-                    <div class="collapse mt-3" id="deviceDetails3">
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item"><strong>Operating Hours:</strong> 600 hrs</li>
-                            <li class="list-group-item"><strong>Fertilizer Type:</strong> Organic</li>
-                            <li class="list-group-item"><strong>Last Maintenance:</strong> 2023-10-01</li>
-                            <li class="list-group-item"><strong>Temperature Range:</strong> 10°C - 30°C</li>
-
-                        </ul>
+    <!-- Tower Details Modal -->
+    <div class="modal fade" id="towerDetailsModal" tabindex="-1" aria-labelledby="towerDetailsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="towerDetailsModalLabel">Tower Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h6>Slots: <span id="slotCount"></span> | Available: <span id="openSlots"></span></h6>
+                    <div id="slotsView" class="d-flex flex-wrap">
+                        <!-- Slots will be dynamically added here -->
+                        <button class="btn btn-primary m-2" data-bs-toggle="modal" data-bs-target="#addCropModal">Add Crop</button>
                     </div>
+                    <div id="cropDetails" style="display:none;">
+                        <!-- Crop details view -->
+                        <button class="btn btn-secondary mt-3" onclick="goBackToSlots()">Back to Slots</button>
+                    </div>
+                    <ul id="devicesList" class="list-group mt-3">
+                        <!-- Device list will be dynamically populated -->
+                        <li class="list-group-item">Device Name 1</li>
+                        <button class="btn btn-primary mt-2" data-bs-toggle="modal" data-bs-target="#addDeviceModal">Add Device</button>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Crop Modal -->
+    <div class="modal fade" id="addCropModal" tabindex="-1" aria-labelledby="addCropModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addCropModalLabel">Add Crop to Slot</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="addCropForm">
+                        <div class="mb-3">
+                            <label for="cropType" class="form-label">Crop Type</label>
+                            <input type="text" class="form-control" id="cropType" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="datePlanted" class="form-label">Date Planted</label>
+                            <input type="date" class="form-control" id="datePlanted" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="expectedHarvest" class="form-label">Expected Harvest Date</label>
+                            <input type="date" class="form-control" id="expectedHarvest" required>
+                        </div>
+                        <button type="submit" class="btn btn-success">Add Crop</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Device Modal -->
+    <div class="modal fade" id="addDeviceModal" tabindex="-1" aria-labelledby="addDeviceModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addDeviceModalLabel">Add Device</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="addDeviceForm">
+                        <div class="mb-3">
+                            <label for="deviceName" class="form-label">Device Name</label>
+                            <input type="text" class="form-control" id="deviceName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="deviceType" class="form-label">Device Type</label>
+                            <input type="text" class="form-control" id="deviceType" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="deviceValue" class="form-label">Initial Value</label>
+                            <input type="text" class="form-control" id="deviceValue" required>
+                        </div>
+                        <button type="submit" class="btn btn-success">Add Device</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Remove Tower Modal -->
+    <div class="modal fade" id="removeTowerModal" tabindex="-1" aria-labelledby="removeTowerModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="removeTowerModalLabel">Remove Tower</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to remove <strong id="towerNameToRemove"></strong>?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-danger" onclick="removeTower()">Confirm</button>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-{%endblock%}
+<script>
+    let towerToRemove = null;
+
+    function showTowerDetails(towerId) {
+        // Fetch details using API and populate modal content
+    }
+
+    function setRemoveTower(towerId, towerName) {
+        towerToRemove = towerId;
+        document.getElementById('towerNameToRemove').innerText = towerName;
+    }
+
+    function removeTower() {
+        // Call DELETE API to remove tower
+        console.log('Removing tower:', towerToRemove);
+        // On success, remove tower from UI
+    }
+
+    function goBackToSlots() {
+        document.getElementById('cropDetails').style.display = 'none';
+        document.getElementById('slotsView').style.display = 'flex';
+    }
+
+    document.getElementById('addTowerForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const name = document.getElementById('towerName').value;
+        const location = document.getElementById('towerLocation').value;
+        const size = document.getElementById('towerSize').value;
+        const type = document.getElementById('towerType').value;
+
+        //need to map these data points to the paramaters of create tower API
+        // tower_id: str
+        // lat: float
+        // lon: float
+        // slots: int
+
+
+
+
+        const newTower = `
+        <div class="col" data-device="${type}" data-tower="${name}">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">${name}</h5>
+                    <p class="card-text"><strong>Location:</strong> ${location}</p>
+                    <p class="card-text"><strong>Size:</strong> ${size}</p>
+                    <p class="card-text"><strong>Type:</strong> ${type}</p>
+                    <button class="btn btn-outline-success btn-sm mt-3" data-bs-toggle="modal" data-bs-target="#towerDetailsModal" onclick="setRemoveTower(1, '${name}')">View Details</button>
+                    <button class="btn btn-outline-danger btn-sm mt-3" data-bs-toggle="modal" data-bs-target="#removeTowerModal" onclick="hideTower(this)">Remove</button>
+
+                </div>
+            </div>
+        </div>`;
+
+        document.getElementById('deviceGrid').insertAdjacentHTML('beforeend', newTower);
+        const modal = bootstrap.Modal.getInstance(document.getElementById('addTowerModal'));
+        modal.hide();
+        document.getElementById('addTowerForm').reset();
+
+    });
+</script>
+
+{% endblock %}

@@ -1,6 +1,5 @@
 # models.py
 from sqlalchemy import (
-    create_engine,
     Column,
     Integer,
     String,
@@ -9,8 +8,7 @@ from sqlalchemy import (
     Date,
     ForeignKey,
 )
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import relationship, sessionmaker
+from sqlalchemy.orm import relationship
 from enum import Enum as PyEnum
 
 from database import Base
@@ -46,12 +44,24 @@ class Farm(Base):
 class Tower(Base):
     __tablename__ = "towers"
     id = Column(Integer, primary_key=True, autoincrement=True)
-    lat = Column(Float, nullable=False)
-    lon = Column(Float, nullable=False)
-    slots = Column(Integer, nullable=False)
+    slot_amount = Column(Integer, nullable=False)
 
     # Relationship to devices
     devices = relationship("Device", back_populates="tower")
+
+class DeviceType(PyEnum):
+    farm = 0
+    tower = 1
+    slot = 2
+
+class Slot(Base):
+    __tablename__ = "slots"
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    tower_id = Column(Integer, ForeignKey("towers.id"), nullable=False)
+    crop = Column(String(150))
+
+
+    tower = relationship("Tower", back_populates="slots")
 
 # Devices table
 class Device(Base):
@@ -60,11 +70,11 @@ class Device(Base):
     user_id = Column(Integer, ForeignKey("users.id"), nullable=False)
     tower_id = Column(Integer, ForeignKey("towers.id"), nullable=False)
     farm_id = Column(Integer, ForeignKey("farms.id"), nullable=False)
+    type = Column(Enum(DeviceType),nullable = False)
+    value = Column(Integer)
+    unit = Column(String(10))
     status = Column(Enum(DeviceStatus), nullable=False)
     installation_date = Column(Date, nullable=False)
-    lat = Column(Float, nullable=False)
-    lon = Column(Float, nullable=False)
-
     # Relationships
     user = relationship("User", back_populates="devices")
     tower = relationship("Tower", back_populates="devices")
