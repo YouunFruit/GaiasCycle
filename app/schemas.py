@@ -8,6 +8,11 @@ class DeviceStatusEnum(str, Enum):
     ONLINE = "online"
     OFFLINE = "offline"
 
+class DeviceTypeEnum(str, Enum):
+    FARM = "farm"
+    TOWER = "tower"
+    SLOT = "slot"
+
 # User Schema
 class UserBase(BaseModel):
     contact: str
@@ -56,18 +61,34 @@ class TowerRead(TowerBase):
 
 # Device Schema
 class DeviceBase(BaseModel):
-    user_id: int
     tower_id: int
     farm_id: int
+    slot_id: int
+    device_type: DeviceTypeEnum
     status: DeviceStatusEnum
-    installation_date: date
-    lat: float
-    lon: float
+    value: int
+    unit: str
+
 
 class DeviceCreate(DeviceBase):
     pass
 
 class DeviceRead(DeviceBase):
+    id: int
+
+    class Config:
+        from_attributes = True
+
+class SlotBase(BaseModel):
+    tower_id:int
+    crop: str
+    date_filled: str
+    expected_harvest:str
+
+class SlotCreate(SlotBase):
+    pass
+
+class SlotRead(SlotBase):
     id: int
 
     class Config:

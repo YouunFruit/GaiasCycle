@@ -2,7 +2,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.future import select
 from fastapi import Depends, HTTPException
 from typing import List, Optional
-from models import User, Farm, Tower, Device, DeviceStatus
+from models import User, Farm, Tower, Device, Slot, DeviceStatus
 from database import get_db
 from schemas import (
     UserCreate,
@@ -13,6 +13,8 @@ from schemas import (
     TowerRead,
     DeviceCreate,
     DeviceRead,
+    SlotCreate,
+    SlotRead,
     DeviceStatusEnum,
 )
 
@@ -65,14 +67,21 @@ async def get_farm_by_id(farm_id: int, db: AsyncSession = Depends(get_db)) -> Fa
         raise HTTPException(status_code=404, detail="Farm not found")
     return FarmRead.model_validate(farm)
 
+async def get_farms( db: AsyncSession = Depends(get_db)) -> FarmRead:
+    stmt = select(Farm)
+    result = await db.execute(stmt)
+    farm = result.scalar()
+    if not farm:
+        raise HTTPException(status_code=404, detail="Farm not found")
+    return FarmRead.model_validate(farm)
+
 
 # TOWERS CRUD
 async def create_tower(tower_data: TowerCreate, db: AsyncSession = Depends(get_db)) -> TowerRead:
     tower = Tower(
-        tower_id=tower_data.tower_id,
         lat=tower_data.lat,
         lon=tower_data.lon,
-        slots=tower_data.slots,
+        slot_amount=tower_data.slots,
     )
     db.add(tower)
     await db.commit()
@@ -92,13 +101,13 @@ async def get_tower_by_id(tower_id: int, db: AsyncSession = Depends(get_db)) -> 
 # DEVICES CRUD
 async def create_device(device_data: DeviceCreate, db: AsyncSession = Depends(get_db)) -> DeviceRead:
     device = Device(
-        user_id=device_data.user_id,
-        tower_id=device_data.tower_id,
         farm_id=device_data.farm_id,
+        tower_id=device_data.tower_id,
+        slot_id=device_data.slot_id,
+        device_type=device_data.device_type,
+        value=device_data.value,
+        unit=device_data.unit,
         status=DeviceStatus[device_data.status.upper()],
-        installation_date=device_data.installation_date,
-        lat=device_data.lat,
-        lon=device_data.lon,
     )
     db.add(device)
     await db.commit()
@@ -120,3 +129,26 @@ async def get_devices_by_user_id(user_id: int, db: AsyncSession = Depends(get_db
     result = await db.execute(stmt)
     devices = result.scalars().all()
     return [DeviceRead.model_validate(device) for device in devices]
+
+
+# SLOTS CRUD
+async def create_slot(slot_data: SlotCreate, db: AsyncSession = Depends(get_db)) -> SlotRead:
+    slot = Slot(
+        tower_id=slot_data.tower_id,
+        crop=slot_data.crop,
+        planted_date=slot_data.date_filled,
+        expected_harvest=slot_data.expected_harvest,
+    )
+    db.add(slot)
+    await db.commit()
+    await db.refresh(slot)
+    return SlotRead.model_validate(slot)
+
+
+async def get_slot_by_id(slot_id: int, db: AsyncSession = Depends(get_db)) -> SlotRead:
+    stmt = select(Slot).where(Slot.id == slot_id)
+    result = await db.execute(stmt)
+    slot = result.scalar_one_or_none()
+    if not slot:
+        raise HTTPException(status_code=404, detail="Slot not found")
+    return SlotRead.model_validate(slot)

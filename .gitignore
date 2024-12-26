@@ -5,3 +5,10 @@
 env/
 app/static/GaiasCycle0001-0250.mp4
 /app/__pycache__
+app/static/favicon_io/android-chrome-192x192.png
+app/static/favicon_io/android-chrome-512x512.png
+app/static/favicon_io/apple-touch-icon.png
+app/static/favicon_io/favicon-16x16.png
+app/static/favicon_io/favicon-32x32.png
+app/static/favicon_io/favicon.ico
+app/static/favicon_io/site.webmanifest
