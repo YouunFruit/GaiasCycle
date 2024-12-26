@@ -89,3 +89,21 @@ async def read_root(req:Request):
 @app.get("/admin/stats", response_class=HTMLResponse)
 async def read_root(req:Request):
     return templates.TemplateResponse("stats.html",{"request":req})
+
+@app.get("/admin/addCrop", response_class=HTMLResponse)
+async def read_root(req:Request):
+    return templates.TemplateResponse("addCrop.html",{"request":req})
+
+
+
+@app.get("/admin/listTowers", response_class=HTMLResponse)
+async def read_root(req:Request):
+    return templates.TemplateResponse("listTowers.html",{"request":req})
+
+@app.get("/admin/listCrops", response_class=HTMLResponse)
+async def read_root(req:Request):
+    return templates.TemplateResponse("listCrops.html",{"request":req})
+
+@app.get("/admin/addTower", response_class=HTMLResponse)
+async def read_root(req:Request):
+    return templates.TemplateResponse("addTower.html",{"request":req})

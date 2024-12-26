@@ -1,29 +1,94 @@
-{% extends "adminBase.html"%}
-{% block content%}
-    <div class="container">
-        <h2 class="text-center fw-bold mb-4">Device List</h2>
-        <div class="table-container">
-            <table class="table table-bordered table-striped">
-                <thead class="table-dark">
-                <tr>
-                    <th>Device ID</th>
-                    <th>Device Name</th>
-                    <th>Device Type</th>
-                    <th>Status</th>
-                    <th>Actions</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Soil Moisture Sensor</td>
-                    <td>Sensor</td>
-                    <td>Active</td>
-                    <td><button class="btn btn-sm">Edit</button> <button class="btn btn-sm btn-danger">Delete</button></td>
-                </tr>
-                </tbody>
-            </table>
-            <a href="/admin/addDevice" class="btn btn-success mt-3">Add New Device</a>
+{% extends "adminBase.html" %}
+{% block content %}
+<div class="container">
+    <h2 class="text-center fw-bold mb-4">Device List</h2>
+
+    <!-- Filter and Search Options -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <select id="filterStatus" class="form-select w-auto" onchange="filterDevices()">
+                <option value="all">Show All</option>
+                <option value="active">Active</option>
+                <option value="inactive">Inactive</option>
+            </select>
+        </div>
+        <div>
+            <input type="text" id="searchDevice" class="form-control w-auto" placeholder="Search by device name..." onkeyup="searchDevices()">
         </div>
     </div>
-{%endblock%}
+
+    <!-- Device Table -->
+    <div class="table-container">
+        <table class="table table-bordered table-striped" id="deviceTable">
+            <thead class="table-dark">
+            <tr>
+                <th onclick="sortTable(0)">Device ID</th>
+                <th onclick="sortTable(1)">Device Name</th>
+                <th onclick="sortTable(2)">Device Type</th>
+                <th onclick="sortTable(3)">Status</th>
+                <th> Belongs to</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr data-status="active">
+                <td>1</td>
+                <td>Soil Moisture Sensor</td>
+                <td>Sensor</td>
+                <td>Active</td>
+                <td> Tower 3</td>
+                <td>
+                    <button class="btn btn-sm btn-primary">Edit</button>
+                    <button class="btn btn-sm btn-danger">Delete</button>
+                </td>
+            </tr>
+            <tr data-status="inactive">
+                <td>2</td>
+                <td>Scanner</td>
+                <td>Sensor</td>
+                <td>Inactive</td>
+                <td> Iker</td>
+                <td>
+                    <button class="btn btn-sm btn-primary">Edit</button>
+                    <button class="btn btn-sm btn-danger">Delete</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <a href="/admin/addDevice" class="btn btn-success mt-3">Add New Device</a>
+    </div>
+</div>
+
+<script>
+    function sortTable(columnIndex) {
+        const table = document.getElementById("deviceTable");
+        const rows = Array.from(table.tBodies[0].rows);
+        const isAscending = table.getAttribute("data-sort-order") === "asc";
+        rows.sort((rowA, rowB) => {
+            const cellA = rowA.cells[columnIndex].innerText.trim().toLowerCase();
+            const cellB = rowB.cells[columnIndex].innerText.trim().toLowerCase();
+            return isAscending ? cellA.localeCompare(cellB) : cellB.localeCompare(cellA);
+        });
+        rows.forEach(row => table.tBodies[0].appendChild(row));
+        table.setAttribute("data-sort-order", isAscending ? "desc" : "asc");
+    }
+
+    function filterDevices() {
+        const filter = document.getElementById("filterStatus").value;
+        const rows = document.querySelectorAll("#deviceTable tbody tr");
+        rows.forEach(row => {
+            const status = row.getAttribute("data-status");
+            row.style.display = filter === "all" || status === filter ? "" : "none";
+        });
+    }
+
+    function searchDevices() {
+        const searchTerm = document.getElementById("searchDevice").value.toLowerCase();
+        const rows = document.querySelectorAll("#deviceTable tbody tr");
+        rows.forEach(row => {
+            const deviceName = row.cells[1].innerText.toLowerCase();
+            row.style.display = deviceName.includes(searchTerm) ? "" : "none";
+        });
+    }
+</script>
+{% endblock %}

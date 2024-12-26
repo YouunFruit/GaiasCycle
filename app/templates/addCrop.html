@@ -1,0 +1,94 @@
+{% extends "adminBase.html" %}
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-5">
+            <div class="card p-4 shadow-lg border-0">
+                <h2 class="text-center mb-1 fw-bold">Add a New Crop</h2>
+                <p class="text-center text-muted mb-4">Provide details about the crop and its tower</p>
+                <form id="addCrop-form" onsubmit="handleAddCrop(event)">
+                    <div class="form-group mb-3">
+                        <label for="towerSelection">Select Tower</label>
+                        <select class="form-control" id="towerSelection" onchange="fetchAvailableSlots()" required>
+                            <option value="">Choose a tower</option>
+                            <!-- Options will be dynamically populated -->
+                        </select>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="availableSlots">Available Slots</label>
+                        <select class="form-control" id="availableSlots" required>
+                            <option value="">Select an available slot</option>
+                            <!-- Options will be dynamically populated -->
+                        </select>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="cropType">Crop Type</label>
+                        <input type="text" class="form-control" id="cropType" placeholder="Enter crop type" required>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="datePlanted">Date Planted</label>
+                        <input type="date" class="form-control" id="datePlanted" required>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="expectedHarvest">Expected Harvest Date</label>
+                        <input type="date" class="form-control" id="expectedHarvest" required>
+                    </div>
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-success">Add Crop</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="successModalLabel">Success</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Your crop has been successfully added!
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-bs-dismiss="modal">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function fetchAvailableSlots() {
+        const towerId = document.getElementById('towerSelection').value;
+        // Fetch available slots for the selected tower via API
+        console.log(`Fetching slots for tower: ${towerId}`);
+
+        // Example dynamic population
+        const slotsDropdown = document.getElementById('availableSlots');
+        slotsDropdown.innerHTML = '<option value="1">Slot 1</option><option value="2">Slot 2</option>';
+    }
+
+    function handleAddCrop(event) {
+        event.preventDefault();
+        const towerId = document.getElementById('towerSelection').value;
+        const slotId = document.getElementById('availableSlots').value;
+        const cropType = document.getElementById('cropType').value;
+        const datePlanted = document.getElementById('datePlanted').value;
+        const expectedHarvest = document.getElementById('expectedHarvest').value;
+
+        console.log({
+            towerId,
+            slotId,
+            cropType,
+            datePlanted,
+            expectedHarvest
+        });
+
+        // Submit data via API and show success modal
+        const successModal = new bootstrap.Modal(document.getElementById('successModal'));
+        successModal.show();
+    }
+</script>
+{% endblock %}

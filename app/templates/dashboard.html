@@ -20,7 +20,7 @@
                                 <p><strong>Total Devices:</strong> 120</p>
                                 <p><strong>Active Farms:</strong> 25</p>
                                 <p><strong>Power Usage:</strong> 3500W</p>
-                                <button type="button" class="btn btn-primary w-100">More Details</button>
+                                <a href="/admin/stats"><button type="button" class="btn btn-primary w-100" >More Details</button> </a>
                             </div>
                         </div>
 
@@ -41,53 +41,17 @@
 
                     <!-- Collapsible Table Section -->
                     <div class="mt-4">
-                        <button
-                                class="btn btn-secondary w-100"
-                                type="button"
-                                data-bs-toggle="collapse"
-                                data-bs-target="#metricsTable"
-                                aria-expanded="false"
-                                aria-controls="metricsTable"
-                        >
-                            Toggle Metrics Table
-                        </button>
-                        <div class="collapse mt-3" id="metricsTable">
-                            <div class="card shadow-sm">
-                                <div class="card-body">
-                                    <table class="table table-bordered table-hover">
-                                        <thead class="table-dark">
-                                        <tr>
-                                            <th>Metric</th>
-                                            <th>Value</th>
-                                            <th>Unit</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <tr>
-                                            <td>Total Devices</td>
-                                            <td>120</td>
-                                            <td>Units</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Active Farms</td>
-                                            <td>25</td>
-                                            <td>Farms</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Power Usage</td>
-                                            <td>3500</td>
-                                            <td>Watts</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Average Device Efficiency</td>
-                                            <td>89%</td>
-                                            <td>Percentage</td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
+                        <div class="row">
+                            <div class="col">
+                        <a href="/admin/addDevice"><button type="button" class="btn btn-primary w-100" > Add Device</button></a>
                             </div>
-                        </div>
+                            <div class="col">
+                                <a href="/admin/addCrop"><button type="button" class="btn btn-primary w-100" > Add Crop</button></a>
+                            </div>
+                            <div class="col">
+                                <a href="/admin/addUser"><button type="button" class="btn btn-primary w-100" > Add User</button></a>
+                            </div>
+                         </div>
                     </div>
                 </div>
             </div>
@@ -150,37 +114,155 @@
             </div>
         </div>
     </div>
-    <h3 class="text-left mb-4 fw-bold">Towers</h3>
     <!-- Second Row -->
-    <div class="row g-3">
-        <div class="col-md-4">
-            <div class="card shadow-sm small-height">
-                <div class="card-body">
-                    <h6 class="card-title">Container 1</h6>
-                    <p class="card-text">Minimal info for container 1.</p>
-                    <p><strong>Data Point:</strong> 42</p>
+    <hr>
+    <div class="container mt-5">
+        <h2 class="text-center mb-4 fw-bold">Towers</h2>
+        <p class="text-center text-muted">Overview of all automated farming devices on your farm</p>
+
+        <!-- Filter Dropdown -->
+        <div class="d-flex justify-content-center mb-4">
+            <select id="filterOptions" class="form-select w-50" onchange="filterDevices()">
+                <option value="default">Sort By</option>
+                <option value="device">Device Type</option>
+                <option value="warnings">Warnings</option>
+                <option value="tower">Tower</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="container">
+        <div id="deviceGrid" class="row row-cols-1 row-cols-md-3 g-4">
+
+            <!-- Device Cards -->
+            <div class="col" data-device="Irrigation System" data-warning="none" data-tower="Tower A">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">Device Name 1</h5>
+                        <p class="card-text"><strong>Type:</strong> Irrigation System</p>
+                        <p class="card-text"><strong>Status:</strong> Active</p>
+                        <p class="card-text"><strong>Power Usage:</strong> 50W</p>
+                        <p class="card-text"><strong>Tower:</strong> Tower A</p>
+                        <button class="btn btn-outline-success btn-sm mt-3" data-bs-toggle="modal" data-bs-target="#towerDetailsModal" onclick="showTowerDetails(1)">View Details</button>
+                        <button class="btn btn-outline-danger btn-sm mt-3" data-bs-toggle="modal" data-bs-target="#removeTowerModal" onclick="setRemoveTower(1, 'Tower A')">Remove</button>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
-            <div class="card shadow-sm small-height">
-                <div class="card-body">
-                    <h6 class="card-title">Container 2</h6>
-                    <p class="card-text">Minimal info for container 2.</p>
-                    <p><strong>Data Point:</strong> 87</p>
+
+        <!-- Add Tower Button -->
+        <div class="d-flex justify-content-end mt-4">
+            <a href="/admin/addTower"><button class="btn btn-primary" >Add Tower</button></a>
+        </div>
+
+
+
+        <!-- Tower Details Modal -->
+        <div class="modal fade" id="towerDetailsModal" tabindex="-1" aria-labelledby="towerDetailsModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="towerDetailsModalLabel">Tower Details</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <h6>Slots: <span id="slotCount"></span> | Available: <span id="openSlots"></span></h6>
+                        <div id="slotsView" class="d-flex flex-wrap">
+                            <!-- Slots will be dynamically added here -->
+                            <button class="btn btn-primary m-2" data-bs-toggle="modal" data-bs-target="#addCropModal">Add Crop</button>
+                        </div>
+                        <div id="cropDetails" style="display:none;">
+                            <!-- Crop details view -->
+                            <button class="btn btn-secondary mt-3" onclick="goBackToSlots()">Back to Slots</button>
+                        </div>
+                        <ul id="devicesList" class="list-group mt-3">
+                            <!-- Device list will be dynamically populated -->
+                            <li class="list-group-item">Device Name 1</li>
+                            <button class="btn btn-primary mt-2" data-bs-toggle="modal" data-bs-target="#addDeviceModal">Add Device</button>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
-            <div class="card shadow-sm small-height">
-                <div class="card-body">
-                    <h6 class="card-title">Container 3</h6>
-                    <p class="card-text">Minimal info for container 3.</p>
-                    <p><strong>Data Point:</strong> 19</p>
+
+        <!-- Add Crop Modal -->
+        <div class="modal fade" id="addCropModal" tabindex="-1" aria-labelledby="addCropModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="addCropModalLabel">Add Crop to Slot</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="addCropForm">
+                            <div class="mb-3">
+                                <label for="cropType" class="form-label">Crop Type</label>
+                                <input type="text" class="form-control" id="cropType" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="datePlanted" class="form-label">Date Planted</label>
+                                <input type="date" class="form-control" id="datePlanted" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="expectedHarvest" class="form-label">Expected Harvest Date</label>
+                                <input type="date" class="form-control" id="expectedHarvest" required>
+                            </div>
+                            <button type="submit" class="btn btn-success">Add Crop</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Add Device Modal -->
+        <div class="modal fade" id="addDeviceModal" tabindex="-1" aria-labelledby="addDeviceModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="addDeviceModalLabel">Add Device</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="addDeviceForm">
+                            <div class="mb-3">
+                                <label for="deviceName" class="form-label">Device Name</label>
+                                <input type="text" class="form-control" id="deviceName" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="deviceType" class="form-label">Device Type</label>
+                                <input type="text" class="form-control" id="deviceType" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="deviceValue" class="form-label">Initial Value</label>
+                                <input type="text" class="form-control" id="deviceValue" required>
+                            </div>
+                            <button type="submit" class="btn btn-success">Add Device</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Remove Tower Modal -->
+        <div class="modal fade" id="removeTowerModal" tabindex="-1" aria-labelledby="removeTowerModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="removeTowerModalLabel">Remove Tower</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Are you sure you want to remove <strong id="towerNameToRemove"></strong>?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-danger" onclick="removeTower()">Confirm</button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+
 
 
 </div>

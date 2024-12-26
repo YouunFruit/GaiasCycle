@@ -1,0 +1,98 @@
+{% extends "adminBase.html" %}
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center fw-bold mb-4">Crop Inventory</h2>
+    <p class="text-center text-muted">Track crops and their associated towers and slots</p>
+
+    <!-- Filter and Sort Options -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <select id="filterOptions" class="form-select w-auto" onchange="filterCrops()">
+                <option value="all">Show All</option>
+                <option value="harvested">Harvested</option>
+                <option value="not-harvested">Not Yet Harvested</option>
+            </select>
+        </div>
+        <div>
+            <input type="text" id="searchInput" class="form-control w-auto" placeholder="Search by crop name..." onkeyup="searchCrops()">
+        </div>
+    </div>
+
+    <!-- Crop Table -->
+    <div class="table-container">
+        <table class="table table-bordered table-striped" id="cropTable">
+            <thead class="table-dark">
+            <tr>
+                <th onclick="sortTable(0)">Crop Name</th>
+                <th onclick="sortTable(1)">Tower</th>
+                <th onclick="sortTable(2)">Slot</th>
+                <th onclick="sortTable(3)">Plant Date</th>
+                <th onclick="sortTable(4)">Expected Harvest Date</th>
+                <th onclick="sortTable(5)">Status</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr data-status="not-harvested">
+                <td>Tomatoes</td>
+                <td>Tower A</td>
+                <td>Slot 1</td>
+                <td>2024-12-01</td>
+                <td>2025-02-01</td>
+                <td>Not Yet Harvested</td>
+                <td>
+                    <button class="btn btn-sm btn-primary">Edit</button>
+                    <button class="btn btn-sm btn-danger">Delete</button>
+                </td>
+            </tr>
+            <tr data-status="harvested">
+                <td>Lettuce</td>
+                <td>Tower B</td>
+                <td>Slot 3</td>
+                <td>2024-09-01</td>
+                <td>2024-11-15</td>
+                <td>Harvested</td>
+                <td>
+                    <button class="btn btn-sm btn-primary">Edit</button>
+                    <button class="btn btn-sm btn-danger">Delete</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <a href="/admin/addCrop" class="btn btn-success mt-3">Add New Crop</a>
+    </div>
+</div>
+
+<script>
+    function sortTable(columnIndex) {
+        const table = document.getElementById("cropTable");
+        const rows = Array.from(table.tBodies[0].rows);
+        const isAscending = table.getAttribute("data-sort-order") === "asc";
+        rows.sort((rowA, rowB) => {
+            const cellA = rowA.cells[columnIndex].innerText.trim().toLowerCase();
+            const cellB = rowB.cells[columnIndex].innerText.trim().toLowerCase();
+            return isAscending ? cellA.localeCompare(cellB) : cellB.localeCompare(cellA);
+        });
+        rows.forEach(row => table.tBodies[0].appendChild(row));
+        table.setAttribute("data-sort-order", isAscending ? "desc" : "asc");
+    }
+
+    function filterCrops() {
+        const filter = document.getElementById("filterOptions").value;
+        const rows = document.querySelectorAll("#cropTable tbody tr");
+        rows.forEach(row => {
+            const status = row.getAttribute("data-status");
+            row.style.display = filter === "all" || status === filter ? "" : "none";
+        });
+    }
+
+    function searchCrops() {
+        const searchTerm = document.getElementById("searchInput").value.toLowerCase();
+        const rows = document.querySelectorAll("#cropTable tbody tr");
+        rows.forEach(row => {
+            const cropName = row.cells[0].innerText.toLowerCase();
+            row.style.display = cropName.includes(searchTerm) ? "" : "none";
+        });
+    }
+</script>
+{% endblock %}

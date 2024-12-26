@@ -1,0 +1,63 @@
+{% extends "adminBase.html"%}
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+    <div class="col-md-6 col-lg-5">
+        <div class="card p-4 shadow-lg border-0">
+    <h2 class="text-center fw-bold mb-4">Add New Tower</h2>
+    <form id="addTowerForm" onsubmit="submitTowerForm(event)">
+        <div class="mb-3">
+            <label for="towerName" class="form-label">Tower Name</label>
+            <input type="text" id="towerName" name="towerName" class="form-control" placeholder="Enter tower name" required>
+        </div>
+        <div class="mb-3">
+            <label for="location" class="form-label">Location</label>
+            <input type="text" id="location" name="location" class="form-control" placeholder="Enter tower location (e.g., Col 4, Row 3)" required>
+        </div>
+        <div class="mb-3">
+            <label for="totalSlots" class="form-label">Number of Slots</label>
+            <input type="number" id="totalSlots" name="totalSlots" class="form-control" placeholder="Enter total number of slots" min="1" required>
+        </div>
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary">Add Tower</button>
+            <a href="/admin/towers" class="btn btn-secondary ms-3">Cancel</a>
+        </div>
+    </form>
+</div>
+    </div>
+</div>
+</div>
+
+<script>
+    const apiBaseUrl = '/api/towers'; // FastAPI endpoint for towers
+
+    async function submitTowerForm(event) {
+        event.preventDefault();
+
+        const formData = {
+            name: document.getElementById('towerName').value.trim(),
+            location: document.getElementById('location').value.trim(),
+            totalSlots: parseInt(document.getElementById('totalSlots').value, 10),
+        };
+
+        try {
+            const response = await fetch(apiBaseUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData),
+            });
+
+            if (response.ok) {
+                alert('Tower added successfully!');
+                window.location.href = '/admin/towers'; // Redirect to tower inventory page
+            } else {
+                const errorData = await response.json();
+                alert(`Failed to add tower: ${errorData.detail}`);
+            }
+        } catch (error) {
+            console.error('Error submitting tower form:', error);
+            alert('An unexpected error occurred. Please try again.');
+        }
+    }
+</script>
+{% endblock %}

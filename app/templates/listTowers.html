@@ -1,0 +1,156 @@
+{% extends "adminBase.html"%}
+{% block content%}
+<div class="container">
+    <h2 class="text-center fw-bold mb-4">Tower Inventory</h2>
+
+    <!-- Search and Filter -->
+    <div class="d-flex justify-content-between mb-3">
+        <input type="text" id="searchInput" class="form-control w-50" placeholder="Search towers by name or location">
+        <select id="filterOptions" class="form-select w-25">
+            <option value="all">All Towers</option>
+            <option value="full">Full Towers</option>
+            <option value="with-available-slots">With Available Slots</option>
+        </select>
+    </div>
+
+    <!-- Tower Table -->
+    <div class="table-container">
+        <table class="table table-bordered table-striped">
+            <thead class="table-dark">
+            <tr>
+                <th>Tower Name</th>
+                <th>Location</th>
+                <th>Number of Slots</th>
+                <th>Available Slots</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody id="towerTableBody">
+            <!-- Dynamic rows populated via API -->
+            </tbody>
+        </table>
+        <a href="/admin/addTower" class="btn btn-success mt-3">Add New Tower</a>
+    </div>
+</div>
+
+<!-- Modals -->
+<!-- Tower Details Modal -->
+<div class="modal fade" id="towerDetailsModal" tabindex="-1" aria-labelledby="towerDetailsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="towerDetailsModalLabel">Tower Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h6>Slots: <span id="slotCount"></span> | Available: <span id="openSlots"></span></h6>
+                <div id="slotsView" class="d-flex flex-wrap">
+                    <!-- Slots view dynamically populated -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Remove Tower Modal -->
+<div class="modal fade" id="removeTowerModal" tabindex="-1" aria-labelledby="removeTowerModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="removeTowerModalLabel">Confirm Delete</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to delete <strong id="towerNameToRemove"></strong>?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-danger" onclick="deleteTower()">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const apiBaseUrl = '/api/towers'; // FastAPI endpoint for towers
+
+    async function fetchTowers() {
+        const response = await fetch(apiBaseUrl);
+        const towers = await response.json();
+        populateTowerTable(towers);
+    }
+
+    function populateTowerTable(towers) {
+        const tableBody = document.getElementById('towerTableBody');
+        tableBody.innerHTML = '';
+        towers.forEach(tower => {
+            const row = `
+                <tr>
+                    <td>${tower.name}</td>
+                    <td>${tower.location}</td>
+                    <td>${tower.totalSlots}</td>
+                    <td>${tower.availableSlots}</td>
+                    <td>
+                        <button class="btn btn-sm btn-primary" onclick="viewTowerDetails('${tower.id}')">Details</button>
+                        <button class="btn btn-sm btn-danger" onclick="setRemoveTower('${tower.id}', '${tower.name}')">Delete</button>
+                    </td>
+                </tr>
+            `;
+            tableBody.innerHTML += row;
+        });
+    }
+
+    function filterTowers(filter) {
+        fetch(`${apiBaseUrl}?filter=${filter}`)
+            .then(response => response.json())
+            .then(data => populateTowerTable(data));
+    }
+
+    document.getElementById('filterOptions').addEventListener('change', (e) => {
+        filterTowers(e.target.value);
+    });
+
+    function searchTowers(query) {
+        fetch(`${apiBaseUrl}?search=${query}`)
+            .then(response => response.json())
+            .then(data => populateTowerTable(data));
+    }
+
+    document.getElementById('searchInput').addEventListener('input', (e) => {
+        searchTowers(e.target.value);
+    });
+
+    async function viewTowerDetails(towerId) {
+        const response = await fetch(`${apiBaseUrl}/${towerId}`);
+        const tower = await response.json();
+        document.getElementById('slotCount').textContent = tower.totalSlots;
+        document.getElementById('openSlots').textContent = tower.availableSlots;
+        // Populate slots view
+        const slotsView = document.getElementById('slotsView');
+        slotsView.innerHTML = '';
+        tower.slots.forEach(slot => {
+            const slotElement = `<div class="slot ${slot.isAvailable ? 'available' : 'occupied'}">${slot.id}</div>`;
+            slotsView.innerHTML += slotElement;
+        });
+        new bootstrap.Modal(document.getElementById('towerDetailsModal')).show();
+    }
+
+    function setRemoveTower(towerId, towerName) {
+        document.getElementById('towerNameToRemove').textContent = towerName;
+        document.getElementById('removeTowerModal').dataset.towerId = towerId;
+    }
+
+    function deleteTower() {
+        const towerId = document.getElementById('removeTowerModal').dataset.towerId;
+        fetch(`${apiBaseUrl}/${towerId}`, { method: 'DELETE' })
+            .then(response => {
+                if (response.ok) {
+                    fetchTowers();
+                }
+            });
+        new bootstrap.Modal(document.getElementById('removeTowerModal')).hide();
+    }
+
+    document.addEventListener('DOMContentLoaded', fetchTowers);
+</script>
+{% endblock %}
