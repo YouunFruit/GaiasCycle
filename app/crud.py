@@ -1,8 +1,9 @@
+from pydantic import ValidationError
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.future import select
 from fastapi import Depends, HTTPException
-from typing import List, Optional
-from models import User, Farm, Tower, Device, Slot, DeviceStatus
+from typing import List, Optional, Dict, Any
+from models import User, Farm, Tower, Device, Slot, DeviceStatus, DeviceType
 from database import get_db
 from schemas import (
     UserCreate,
@@ -95,13 +96,18 @@ async def get_towers( db: AsyncSession = Depends(get_db)) -> List[TowerRead]:
         raise HTTPException(status_code=404, detail="Tower not found")
     return [TowerRead.model_validate(tower) for tower in towers]
 
-async def get_devices( db: AsyncSession = Depends(get_db)) -> List[DeviceRead]:
+async def get_devices(db: AsyncSession = Depends(get_db)) -> list[dict[str, Any]]:
     stmt = select(Device)
     result = await db.execute(stmt)
     devices = result.scalars().all()
     if not devices:
         raise HTTPException(status_code=404, detail="Device not found")
-    return [DeviceRead.model_validate(device) for device in devices]
+
+    # Use model_dump to serialize and exclude fields
+    return [
+        DeviceRead.model_validate(device).model_dump(exclude={"slot", "tower", "farm"})
+        for device in devices
+    ]
 
 async def get_slots( db: AsyncSession = Depends(get_db)) -> List[SlotRead]:
     stmt = select(Slot)
@@ -126,15 +132,21 @@ async def create_device(device_data: DeviceCreate, db: AsyncSession = Depends(ge
         farm_id=device_data.farm_id,
         tower_id=device_data.tower_id,
         slot_id=device_data.slot_id,
-        device_type=device_data.device_type,
+        device_type=DeviceType[device_data.device_type],  # Convert string to Enum
         value=device_data.value,
         unit=device_data.unit,
-        status=DeviceStatus[device_data.status.upper()],
+        status=DeviceStatus[device_data.status],  # Convert string to Enum
+        installation_date=device_data.installation_date
     )
     db.add(device)
     await db.commit()
     await db.refresh(device)
-    return DeviceRead.model_validate(device)
+
+    try:
+        validated_device = DeviceRead.model_validate(device)  # Validate the SQLAlchemy model instance
+        return validated_device
+    except ValidationError as e:
+        raise HTTPException(status_code=422, detail=f"Validation error: {e}")
 
 
 async def get_device_by_id(device_id: int, db: AsyncSession = Depends(get_db)) -> DeviceRead:
@@ -144,13 +156,6 @@ async def get_device_by_id(device_id: int, db: AsyncSession = Depends(get_db)) -
     if not device:
         raise HTTPException(status_code=404, detail="Device not found")
     return DeviceRead.model_validate(device)
-
-
-async def get_devices_by_user_id(user_id: int, db: AsyncSession = Depends(get_db)) -> List[DeviceRead]:
-    stmt = select(Device).where(Device.user_id == user_id)
-    result = await db.execute(stmt)
-    devices = result.scalars().all()
-    return [DeviceRead.model_validate(device) for device in devices]
 
 
 # SLOTS CRUD

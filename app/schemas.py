@@ -8,13 +8,13 @@ from pydantic.v1 import validator
 
 # Enum for Device Status
 class DeviceStatusEnum(str, Enum):
-    ONLINE = "online"
-    OFFLINE = "offline"
+    ONLINE = "ONLINE"
+    OFFLINE = "OFFLINE"
 
 class DeviceTypeEnum(str, Enum):
-    FARM = "farm"
-    TOWER = "tower"
-    SLOT = "slot"
+    FARM = "FARM"
+    TOWER = "TOWER"
+    SLOT = "SLOT"
 
 # User Schema
 class UserBase(BaseModel):
@@ -69,7 +69,10 @@ class DeviceBase(BaseModel):
     status: DeviceStatusEnum
     value: int
     unit: str
+    installation_date: date
 
+    class Config:
+        use_enum_values = True
 
 class DeviceCreate(DeviceBase):
     pass

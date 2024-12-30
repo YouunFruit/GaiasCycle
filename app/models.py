@@ -14,8 +14,8 @@ from enum import Enum as PyEnum
 from database import Base
 
 class DeviceStatus(PyEnum):
-    online = 1
-    offline = 0
+    ONLINE = 1
+    OFFLINE = 0
 
 # Users table
 class User(Base):
@@ -54,9 +54,9 @@ class Tower(Base):
 
 
 class DeviceType(PyEnum):
-    farm = 0
-    tower = 1
-    slot = 2
+    FARM = 0
+    TOWER = 1
+    SLOT = 2
 
 class Slot(Base):
     __tablename__ = "slots"
@@ -75,10 +75,10 @@ class Device(Base):
     farm_id = Column(Integer, ForeignKey("farms.id"), nullable=False)
     tower_id = Column(Integer, ForeignKey("towers.id"), nullable=False)
     slot_id = Column(Integer, ForeignKey("slots.id"), nullable=False)
-    device_type = Column(Enum(DeviceType),nullable = False)
-    value = Column(Integer)
-    unit = Column(String(10))
-    status = Column(Enum(DeviceStatus), nullable=False)
+    device_type = Column(Enum(DeviceType, native_enum=False), nullable=False)
+    value = Column(Integer, nullable=False)
+    unit = Column(String(10), nullable=False)
+    status = Column(Enum(DeviceStatus, native_enum=False), nullable=False)
     installation_date = Column(Date, nullable=False)
     # Relationships
     slot = relationship("Slot", back_populates="devices")

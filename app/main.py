@@ -168,10 +168,6 @@ async def api_get_devices(db: AsyncSession = Depends(get_db)):
 async def api_get_device_by_id(device_id: int, db: AsyncSession = Depends(get_db)):
     return await get_device_by_id(device_id, db)
 
-@app.get("/api/device/user/{user_id}", response_model=List[DeviceRead])
-async def api_get_devices_by_user_id(user_id: int, db: AsyncSession = Depends(get_db)):
-    return await get_devices_by_user_id(user_id, db)
-
 # SLOT ENDPOINTS
 @app.post("/api/slot", response_model=SlotRead)
 async def api_create_slot(slot: SlotCreate, db: AsyncSession = Depends(get_db)):
