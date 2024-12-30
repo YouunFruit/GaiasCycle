@@ -32,6 +32,9 @@ class Farm(Base):
     id = Column(Integer, primary_key=True, autoincrement=True)
     lat = Column(Float, nullable=False)
     lon = Column(Float, nullable=False)
+    size = Column(String(15),nullable=False)
+
+    towers = relationship("Tower", back_populates="farm")
 
     # Relationship to devices
     devices = relationship("Device", back_populates="farm")
@@ -41,7 +44,9 @@ class Tower(Base):
     __tablename__ = "towers"
     id = Column(Integer, primary_key=True, autoincrement=True)
     slot_amount = Column(Integer, nullable=False)
+    farm_id = Column(Integer, ForeignKey("farms.id"), nullable=True)  # Add this if a Tower is linked to a Farm
 
+    farm = relationship("Farm", back_populates="towers")
     # Relationship to devices
     devices = relationship("Device", back_populates="tower")
 
