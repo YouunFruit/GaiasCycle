@@ -1,4 +1,4 @@
-# Sequence Diagrams
+ # Sequence Diagrams
 <!-- 
 Include:
 1. Diagrams for user login, data retrieval, etc.

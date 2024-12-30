@@ -228,15 +228,24 @@
 
     </section>
 
-    <!-- Call to Action Section -->
-    <section id="contribute" class="container p-5 text-center" style="margin-bottom: 5rem !important;">
+    <!-- Newsletter -->
+    <section id="contribute" class="container p-5 text-center" style="margin-bottom: 2rem !important;">
         <h2 class="fw-bold">Join <span class="underline">Gaia's Cycle</span> Community</h2>
         <p>Subscribe to our newsletter for the latest updates on eco-friendly farming.</p>
-        <form action="subscribe.html" method="post" class="d-flex flex-column align-items-center">
+        <form class="d-flex flex-column align-items-center" onsubmit="showAlert(event)">
             <div class="mb-3 w-50">
                 <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
             </div>
             <button type="submit" class="btn btn-success">Subscribe Now</button>
         </form>
     </section>
+    
+    <script>
+        function showAlert(event) {
+            event.preventDefault();
+            const email = document.getElementById('email').value;
+            alert(`${email} subscribed to our newsletter!`);
+        }
+    </script>
+
 {%endblock%}
