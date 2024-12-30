@@ -45,10 +45,8 @@ class FarmRead(FarmBase):
 
 # Tower Schema
 class TowerBase(BaseModel):
-    tower_id: str
-    lat: float
-    lon: float
-    slots: int
+    farm_id: int
+    slot_amount: int
 
 class TowerCreate(TowerBase):
     pass
