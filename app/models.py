@@ -63,7 +63,7 @@ class Slot(Base):
     id = Column(Integer, primary_key=True, autoincrement=True)
     tower_id = Column(Integer, ForeignKey("towers.id"), nullable=False)
     crop = Column(String(150))
-    planted_date = Column(Date, nullable=False)
+    date_filled = Column(Date, nullable=False)
     expected_harvest = Column(Date, nullable=False)
     tower = relationship("Tower", back_populates="slots")
     devices = relationship("Device", back_populates="slot")
