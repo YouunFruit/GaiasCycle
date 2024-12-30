@@ -135,19 +135,7 @@
         <div id="deviceGrid" class="row row-cols-1 row-cols-md-3 g-4">
 
             <!-- Device Cards -->
-            <div class="col" data-device="Irrigation System" data-warning="none" data-tower="Tower A">
-                <div class="card h-100 shadow-sm">
-                    <div class="card-body">
-                        <h5 class="card-title">Device Name 1</h5>
-                        <p class="card-text"><strong>Type:</strong> Irrigation System</p>
-                        <p class="card-text"><strong>Status:</strong> Active</p>
-                        <p class="card-text"><strong>Power Usage:</strong> 50W</p>
-                        <p class="card-text"><strong>Tower:</strong> Tower A</p>
-                        <button class="btn btn-outline-success btn-sm mt-3" data-bs-toggle="modal" data-bs-target="#towerDetailsModal" onclick="showTowerDetails(1)">View Details</button>
-                        <button class="btn btn-outline-danger btn-sm mt-3" data-bs-toggle="modal" data-bs-target="#removeTowerModal" onclick="setRemoveTower(1, 'Tower A')">Remove</button>
-                    </div>
-                </div>
-            </div>
+            
         </div>
 
         <!-- Add Tower Button -->
@@ -267,6 +255,35 @@
 
 </div>
 
+<script>
 
+    async function start() {
+        const devicegrid = document.getElementById("deviceGrid")
+        fetch("http://localhost:8000/api/tower")
+            .then((response) => response.json())
+            .then((responseJSON) => {
+                console.log(responseJSON[0])
+                for (let i = 0; i < responseJSON.length; i++) {
+                    devicegrid.innerHTML += `
+                    <div class="col" data-device="Irrigation System" data-warning="none" data-tower="Tower A">
+                        <div class="card h-100 shadow-sm">
+                            <div class="card-body">
+                                <h5 class="card-title">Tower ${responseJSON[i].id}</h5>
+                                <p class="card-text"><strong>Farm id:</strong> ${responseJSON[i].farm_id}</p>
+                                <p class="card-text"><strong>Tower ID:</strong> ${responseJSON[i].id}</p>
+                                <p class="card-text"><strong>Slot ammount:</strong> ${responseJSON[i].slot_amount}</p>
+                                <button class="btn btn-outline-success btn-sm mt-3" data-bs-toggle="modal" data-bs-target="#towerDetailsModal" onclick="showTowerDetails(1)">View Details</button>
+                                <button class="btn btn-outline-danger btn-sm mt-3" data-bs-toggle="modal" data-bs-target="#removeTowerModal" onclick="setRemoveTower(1, 'Tower A')">Remove</button>
+                            </div>
+                        </div>
+                    </div>`
+                }
+
+
+            })
+            .catch(error => {console.log(error)});
+    }
+    start()
+</script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.2/dist/chart.umd.js" integrity="sha384-eI7PSr3L1XLISH8JdDII5YN/njoSsxfbrkCTnJrzXt+ENP5MOVBxD+l6sEG4zoLp" crossorigin="anonymous"></script>
 {%endblock%}

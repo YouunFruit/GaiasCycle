@@ -110,69 +110,73 @@ async def read_root(req:Request):
     return templates.TemplateResponse("addTower.html",{"request":req})
 
 # USER ENDPOINTS
-@app.post("/api/users", response_model=UserRead)
+@app.post("/api/user", response_model=UserRead)
 async def api_create_user(user: UserCreate, db: AsyncSession = Depends(get_db)):
     return await create_user(user, db)
 
 
-@app.get("/api/users/{user_id}", response_model=UserRead)
+@app.get("/api/user/{user_id}", response_model=UserRead)
 async def api_get_user_by_id(user_id: int, db: AsyncSession = Depends(get_db)):
     return await get_user_by_id(user_id, db)
 
 
-@app.get("/api/users/username/{username}", response_model=UserRead)
+@app.get("/api/user/username/{username}", response_model=UserRead)
 async def api_get_user_by_username(username: str, db: AsyncSession = Depends(get_db)):
     return await get_user_by_username(username, db)
 
 
 # FARM ENDPOINTS
-@app.post("/api/farms", response_model=FarmRead)
+@app.post("/api/farm", response_model=FarmRead)
 async def api_create_farm(farm: FarmCreate, db: AsyncSession = Depends(get_db)):
     return await create_farm(farm, db)
 
-@app.get("/api/farm", response_model=FarmRead)
+@app.get("/api/farm", response_model=List[FarmRead])
 async def api_get_farms( db: AsyncSession = Depends(get_db)):
     return await get_farms(db)
 
 
-@app.get("/api/farms/{farm_id}", response_model=FarmRead)
+@app.get("/api/farm/{farm_id}", response_model=FarmRead)
 async def api_get_farm_by_id(farm_id: int, db: AsyncSession = Depends(get_db)):
     return await get_farm_by_id(farm_id, db)
 
 
 # TOWER ENDPOINTS
-@app.post("/api/towers", response_model=TowerRead)
+@app.post("/api/tower", response_model=TowerRead)
 async def api_create_tower(tower: TowerCreate, db: AsyncSession = Depends(get_db)):
     return await create_tower(tower, db)
 
+@app.get("/api/tower", response_model=List[TowerRead])
+async def api_get_towers( db: AsyncSession = Depends(get_db)):
+    return await get_towers(db)
 
-@app.get("/api/towers/{tower_id}", response_model=TowerRead)
+
+@app.get("/api/tower/{tower_id}", response_model=TowerRead)
 async def api_get_tower_by_id(tower_id: int, db: AsyncSession = Depends(get_db)):
     return await get_tower_by_id(tower_id, db)
 
 
 # DEVICE ENDPOINTS
-@app.post("/api/devices", response_model=DeviceRead)
+@app.post("/api/device", response_model=DeviceRead)
 async def api_create_device(device: DeviceCreate, db: AsyncSession = Depends(get_db)):
     return await create_device(device, db)
 
+@app.get("/api/device", response_model=List[DeviceRead])
+async def api_get_devices(db: AsyncSession = Depends(get_db)):
+    return await get_devices(db)
 
-@app.get("/api/devices/{device_id}", response_model=DeviceRead)
+@app.get("/api/device/{device_id}", response_model=DeviceRead)
 async def api_get_device_by_id(device_id: int, db: AsyncSession = Depends(get_db)):
     return await get_device_by_id(device_id, db)
 
-
-@app.get("/api/devices/user/{user_id}", response_model=List[DeviceRead])
-async def api_get_devices_by_user_id(user_id: int, db: AsyncSession = Depends(get_db)):
-    return await get_devices_by_user_id(user_id, db)
-
-
 # SLOT ENDPOINTS
-@app.post("/api/slots", response_model=SlotRead)
+@app.post("/api/slot", response_model=SlotRead)
 async def api_create_slot(slot: SlotCreate, db: AsyncSession = Depends(get_db)):
     return await create_slot(slot, db)
 
+@app.get("/api/slot", response_model=List[SlotRead])
+async def api_get_slots(db: AsyncSession = Depends(get_db)):
+    return await get_slots(db)
 
-@app.get("/api/slots/{slot_id}", response_model=SlotRead)
+@app.get("/api/slot/{slot_id}", response_model=SlotRead)
 async def api_get_slot_by_id(slot_id: int, db: AsyncSession = Depends(get_db)):
     return await get_slot_by_id(slot_id, db)
