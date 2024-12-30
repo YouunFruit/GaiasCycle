@@ -67,13 +67,13 @@ async def get_farm_by_id(farm_id: int, db: AsyncSession = Depends(get_db)) -> Fa
         raise HTTPException(status_code=404, detail="Farm not found")
     return FarmRead.model_validate(farm)
 
-async def get_farms( db: AsyncSession = Depends(get_db)) -> FarmRead:
+async def get_farms( db: AsyncSession = Depends(get_db)) -> List[FarmRead]:
     stmt = select(Farm)
     result = await db.execute(stmt)
-    farm = result.scalar()
-    if not farm:
+    farms = result.scalars().all()
+    if not farms:
         raise HTTPException(status_code=404, detail="Farm not found")
-    return FarmRead.model_validate(farm)
+    return [FarmRead.model_validate(farm) for farm in farms]
 
 
 # TOWERS CRUD
@@ -87,29 +87,29 @@ async def create_tower(tower_data: TowerCreate, db: AsyncSession = Depends(get_d
     await db.refresh(tower)
     return TowerRead.model_validate(tower)
 
-async def get_towers( db: AsyncSession = Depends(get_db)) -> TowerRead:
+async def get_towers( db: AsyncSession = Depends(get_db)) -> List[TowerRead]:
     stmt = select(Tower)
     result = await db.execute(stmt)
-    tower = result.scalar()
-    if not tower:
+    towers = result.scalars().all()
+    if not towers:
         raise HTTPException(status_code=404, detail="Tower not found")
-    return TowerRead.model_validate(tower)
+    return [TowerRead.model_validate(tower) for tower in towers]
 
-async def get_devices( db: AsyncSession = Depends(get_db)) -> DeviceRead:
+async def get_devices( db: AsyncSession = Depends(get_db)) -> List[DeviceRead]:
     stmt = select(Device)
     result = await db.execute(stmt)
-    device = result.scalar()
-    if not device:
+    devices = result.scalars().all()
+    if not devices:
         raise HTTPException(status_code=404, detail="Device not found")
-    return DeviceRead.model_validate(device)
+    return [DeviceRead.model_validate(device) for device in devices]
 
-async def get_slots( db: AsyncSession = Depends(get_db)) -> SlotRead:
+async def get_slots( db: AsyncSession = Depends(get_db)) -> List[SlotRead]:
     stmt = select(Slot)
     result = await db.execute(stmt)
-    slot = result.scalar()
-    if not slot:
+    slots = result.scalars().all()
+    if not slots:
         raise HTTPException(status_code=404, detail="Slot not found")
-    return SlotRead.model_validate(slot)
+    return [SlotRead.model_validate(slot) for slot in slots]
 
 async def get_tower_by_id(tower_id: int, db: AsyncSession = Depends(get_db)) -> TowerRead:
     stmt = select(Tower).where(Tower.id == tower_id)

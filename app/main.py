@@ -130,7 +130,7 @@ async def api_get_user_by_username(username: str, db: AsyncSession = Depends(get
 async def api_create_farm(farm: FarmCreate, db: AsyncSession = Depends(get_db)):
     return await create_farm(farm, db)
 
-@app.get("/api/farm", response_model=FarmRead)
+@app.get("/api/farm", response_model=List[FarmRead])
 async def api_get_farms( db: AsyncSession = Depends(get_db)):
     return await get_farms(db)
 
@@ -145,7 +145,7 @@ async def api_get_farm_by_id(farm_id: int, db: AsyncSession = Depends(get_db)):
 async def api_create_tower(tower: TowerCreate, db: AsyncSession = Depends(get_db)):
     return await create_tower(tower, db)
 
-@app.get("/api/tower", response_model=FarmRead)
+@app.get("/api/tower", response_model=List[TowerRead])
 async def api_get_towers( db: AsyncSession = Depends(get_db)):
     return await get_towers(db)
 
