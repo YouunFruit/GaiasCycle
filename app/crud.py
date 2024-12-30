@@ -158,7 +158,7 @@ async def create_slot(slot_data: SlotCreate, db: AsyncSession = Depends(get_db))
     slot = Slot(
         tower_id=slot_data.tower_id,
         crop=slot_data.crop,
-        planted_date=slot_data.date_filled,
+        date_filled=slot_data.date_filled,
         expected_harvest=slot_data.expected_harvest,
     )
     db.add(slot)
