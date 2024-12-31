@@ -14,7 +14,7 @@ cursor = conn.cursor()
 
 # Kafka consumer setup
 consumer = KafkaConsumer(
-    'crypto_transactions',
+    'devices',
     bootstrap_servers='localhost:9092',
     value_deserializer=lambda m: json.loads(m.decode('utf-8'))
 )

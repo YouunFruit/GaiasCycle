@@ -3,6 +3,8 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.future import select
 from fastapi import Depends, HTTPException
 from typing import List, Optional, Dict, Any
+
+import producer
 from models import User, Farm, Tower, Device, Slot, DeviceStatus, DeviceType
 from database import get_db
 from schemas import (
@@ -144,6 +146,7 @@ async def create_device(device_data: DeviceCreate, db: AsyncSession = Depends(ge
 
     try:
         validated_device = DeviceRead.model_validate(device)  # Validate the SQLAlchemy model instance
+        producer.start(validated_device)
         return validated_device
     except ValidationError as e:
         raise HTTPException(status_code=422, detail=f"Validation error: {e}")

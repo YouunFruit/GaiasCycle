@@ -65,8 +65,8 @@ class DeviceBase(BaseModel):
     tower_id: int
     farm_id: int
     slot_id: int
-    device_type: DeviceTypeEnum
-    status: DeviceStatusEnum
+    device_type: str  # Using str to store Enum values
+    status: str       # Using str to store Enum values
     value: int
     unit: str
     installation_date: date
