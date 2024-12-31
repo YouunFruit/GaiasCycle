@@ -75,11 +75,12 @@ class Device(Base):
     farm_id = Column(Integer, ForeignKey("farms.id"), nullable=False)
     tower_id = Column(Integer, ForeignKey("towers.id"), nullable=False)
     slot_id = Column(Integer, ForeignKey("slots.id"), nullable=False)
-    device_type = Column(Enum(DeviceType, native_enum=False), nullable=False)
+    device_type = Column(Enum(DeviceType), nullable=False)
     value = Column(Integer, nullable=False)
     unit = Column(String(10), nullable=False)
-    status = Column(Enum(DeviceStatus, native_enum=False), nullable=False)
+    status = Column(Enum(DeviceStatus), nullable=False)
     installation_date = Column(Date, nullable=False)
+
     # Relationships
     slot = relationship("Slot", back_populates="devices")
     tower = relationship("Tower", back_populates="devices")
