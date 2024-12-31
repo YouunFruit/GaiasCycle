@@ -82,6 +82,8 @@ nav:
       - Kafka: advanced-topics/kafka.md
       - API Reference: advanced-topics/api-reference.md
   - Troubleshooting: troubleshooting.md
+  - FAQ: faq.md
+  - Glossary: glossary.md
 
 
 
