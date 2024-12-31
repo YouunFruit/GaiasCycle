@@ -3,42 +3,9 @@
 ## Database Schema Diagram
 
 ```plaintext
-[User]
-- id [PK] : Integer
-- contact : String
-- name : String
-- username : String
 
-[Farm]
-- id [PK] : Integer
-- user_id [FK] -> User(id)
-- lat : Float
-- lon : Float
-- size : Float
-
-[Tower]
-- id [PK] : Integer
-- farm_id [FK] -> Farm(id)
-- slot_amount : Integer
-
-[Slot]
-- id [PK] : Integer
-- tower_id [FK] -> Tower(id)
-- crop : String
-- date_filled : Date
-- expected_harvest : Date
-
-[Device]
-- id [PK] : Integer
-- tower_id [FK] -> Tower(id)
-- farm_id [FK] -> Farm(id)
-- slot_id [FK] -> Slot(id)
-- device_type : Enum(FARM, TOWER, SLOT)
-- status : Enum(ONLINE, OFFLINE)
-- value : Integer
-- unit : String
-- installation_date : Date
 ```
+![Alt text](../images/ERdiagram.png)
 
 Use tools like [dbdiagram.io](https://dbdiagram.io) to visualize this schema.
 

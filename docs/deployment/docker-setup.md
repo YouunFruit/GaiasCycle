@@ -1,6 +1,7 @@
 # Docker Setup
+## MYSQL
 
-this project requires a mysql database to run, you can set one up by
+This project requires a mysql database to run, you can set one up by
 running the following commands on a terminal
 
 - get the mysql image from the repository
@@ -23,7 +24,23 @@ docker exec -it gaiascycle_db sh
 ```
 mysql
 ```
-- the last step will be to create the database
+- The last step will be to create the database
+- In a query console run the following.
 
 ```
 CREATE DATABASE gaiascycle;
+```
+
+##Kafka
+
+This Project also requires a kafka image to be run. Kafka will produce the dummy data needed to test our product.
+
+- Pull a kafka image on docker
+```
+docker pull kafka
+
+```
+- Create and run a container
+```
+docker run -d --name broker apache/kafka:latest
+```
