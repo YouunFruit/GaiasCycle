@@ -68,30 +68,25 @@ nav:
       - Admin Pages: features/admin-pages.md
       - User Interface: features/ui.md
       - Map and Search: features/map-and-search.md
-      - AI Analysis: features/AI-analysis.md
   - Components:
       - Frontend: components/frontend.md
       - Backend: components/backend.md
-      - Third-Party Integrations: components/third-party-integrations.md
       - Building Blocks: components/building-blocks.md
   - Deployment:
       - Docker Setup: deployment/docker-setup.md
-      - Environment Variables: deployment/environment-variables.md
-      - Production Deployment: deployment/production-deployment.md
   - Development:
       - Git Workflow: development/git-workflow.md
       - Coding Standards: development/coding-standards.md
       - Testing: development/testing.md
   - Advanced Topics:
       - Kafka: advanced-topics/kafka.md
-      - Scaling: advanced-topics/scaling.md
       - API Reference: advanced-topics/api-reference.md
   - Troubleshooting: troubleshooting.md
   - FAQ: faq.md
   - Glossary: glossary.md
 
-extra_css:
- - stylesheets/extra.css
+
+
 
 markdown_extensions:
  - pymdownx.arithmatex:
@@ -125,7 +120,6 @@ markdown_extensions:
     emoji_generator: !!python/name:material.extensions.emoji.to_svg
 
 extra_javascript:
-  - javascripts/mathjax.js
   - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
   - https://unpkg.com/mermaid@10/dist/mermaid.min.js
 

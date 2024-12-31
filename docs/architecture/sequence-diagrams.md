@@ -1,9 +1,4 @@
  # Sequence Diagrams
-<!-- 
-Include:
-1. Diagrams for user login, data retrieval, etc.
-2. Brief explanation of each diagram.
--->
 
 <!-- 
 Include:
@@ -14,21 +9,29 @@ Include:
 3. Tools to generate diagrams (recommendation: Mermaid.js for Markdown integration).
 -->
 
-## User Login and Authentication
 
-<!-- 
-Diagram: 
-Show how the user's login request is processed from the frontend to the backend, 
-including database queries and responses.
--->
 
 ## Data Retrieval (e.g., Stats Fetching)
 
-<!-- 
-Diagram: 
-Illustrate how data is fetched from the database when a user requests stats 
-and how it is presented on the frontend.
--->
+## Sequence Diagram: Data Analysis Workflow
+
+This diagram illustrates the data flow and interactions between components when a user requests to view statistics. It highlights the role of each component, including the frontend, backend, database, and third-party services, in fetching, analyzing, and presenting the data.
+
+### Steps:
+
+1. **Data Production**:
+    - The Kafka Producer generates and streams data to the Kafka Consumer. This could represent real-time data from IoT devices, user interactions, or other sources relevant to the system.
+
+2. **Data Ingestion**:
+    - The Kafka Consumer listens to the topic and consumes the data, parsing and processing it as necessary.
+    - Once processed, the Kafka Consumer writes the data to the relational database (e.g., MySQL).
+
+3. **Result Presentation**:
+    - The results are sent back to the FastAPI backend.
+    - The backend prepares these metrics in a structured format (e.g., JSON or rendered HTML) and sends them to the frontend.
+    - The frontend displays the metrics to the user through the stats dashboard.
+
+![Alt text](../images/SQD1.png)
 
 
 

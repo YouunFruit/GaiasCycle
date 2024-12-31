@@ -1,69 +1,58 @@
 # Building Blocks
 
-The GaiaCycle project is structured around key components and reusable functionalities to ensure maintainability and scalability. This section outlines the building blocks of the application.
+The Gaia Cycle platform is designed with modular components to ensure scalability, maintainability, and high performance. This document outlines the key building blocks of the system.
 
-## 1. Core Components
-### Database
-- The database serves as the backbone of GaiaCycle, storing user data, plant growth records, and feedback submissions.
-- **Technology**: PostgreSQL is used for its robustness and compatibility with Django.
-- **Schema**:
-  - Users table: Stores user profile information.
-  - Plants table: Records details about plant species, growth rates, and associated metrics.
-  - Feedback table: Stores feedback and contact form submissions.
+---
 
-### Frontend
-- Developed using **HTML**, **CSS**, and **Bootstrap** for responsive design.
-- Key features include:
-  - Navigation bar for accessing pages such as Home, Maps, and Contact Us.
-  - Interactive forms for data input and feedback submission.
-  - Tutorial page designed for user guidance.
+## 1. **Frontend**
+- Developed using **HTML**, **CSS**, and **JavaScript**, with **Bootstrap** for responsive design.
+- Provides an intuitive interface for tracking sustainability metrics and managing data.
+- Dynamically fetches and displays data through API integration.
 
-### Backend
-- Built with **Django**, providing a strong framework for routing, database interaction, and form handling.
-- Handles user requests, manages business logic, and ensures secure communication between the frontend and the database.
+---
 
-## 2. Reusable Components
-- **Reusable Functions**:
-  - `send_email_notification`: Sends confirmation emails to users after form submissions.
-  - `calculate_growth_rate`: Computes plant growth based on input environmental data.
-- **UI Components**:
-  - Modular form templates for input validation (e.g., feedback form).
-  - Bootstrap-based reusable buttons (e.g., Back to Top button).
-- **CSS and JavaScript**:
-  - Shared stylesheets for consistent branding across pages.
-  - Common JavaScript utilities for client-side validation.
+## 2. **Backend**
+- Built using **FastAPI**, a Python framework optimized for speed and reliability.
+- Manages data validation, processing, and routing of API calls.
+- Implements authentication, authorization, and security measures.
 
-## 3. Dependencies
-### External Libraries and Tools
-- **Bootstrap**: For responsive design and UI components.
-- **FontAwesome**: For icons and visual enhancements.
-- **Django**: As the web framework for backend development.
-- **PostgreSQL**: Database management system.
-- **Favicon**: Integrated for a professional touch across all pages.
-- **Testing Tools**: Pytest for unit testing backend logic.
+---
 
-### Integration
-- External APIs for advanced features (e.g., Google Maps API for the Maps page).
-- CDN-hosted resources for Bootstrap and FontAwesome.
+## 3. **Database**
+- Powered by **MySQL**, designed for storing structured data efficiently.
+- Handles scalability requirements to support large datasets related to user interactions and sustainability insights.
 
-## 4. Testing and Quality
-### Testing Guidelines
-- Write unit tests for critical backend functions, such as:
-  - Database interactions.
-  - Form validation logic.
-  - Email notification system.
-- Use Django’s built-in testing framework for comprehensive coverage.
+---
 
-### Quality Assurance
-- Peer reviews for all new modules or major updates.
-- Regular code audits to ensure adherence to coding standards.
-- Continuous integration tools (e.g., GitHub Actions) to run automated tests on every pull request.
+## 4. **APIs**
+- Implements RESTful APIs to facilitate communication between the frontend and backend.
+- Provides endpoints for:
+  - **User management**
+  - **Data submission**
+  - **Real-time analytics**
 
-### Example Test Case
-```python
-def test_calculate_growth_rate():
-    soil_moisture = 50
-    light_exposure = 8
-    expected_rate = (soil_moisture * 0.4) + (light_exposure * 0.6)
-    assert calculate_growth_rate(soil_moisture, light_exposure) == expected_rate
+---
+
+## 5. **Third-Party Integrations**
+- Uses **Twilio** for SMS notifications and communication.
+- Integrates **Redis** for caching frequently accessed data, improving performance.
+- Leverages **Ngrok** for secure external tunneling during development.
+
+---
+
+## 6. **Testing Frameworks**
+- Backend testing with **pytest** for validation and performance testing.
+- Frontend testing frameworks for UI consistency and usability testing.
+
+---
+
+## 7. **Deployment Tools**
+- Uses **Docker** for containerization, ensuring consistent deployment across environments.
+- Implements CI/CD pipelines for continuous integration and delivery, streamlining updates.
+
+---
+
+## Final Notes
+
+The modular design of the Gaia Cycle platform ensures seamless scalability and ease of maintenance. Each component plays a vital role in providing users with a reliable and interactive experience. For more information, visit the [GitHub repository](https://github.com/MarieBelle88/GaiasCycle).
 

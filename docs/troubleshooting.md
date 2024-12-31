@@ -1,7 +1,3 @@
-# Troubleshooting
-
----
-
 # Troubleshooting Guide
 
 ## Common Issues and Solutions

@@ -31,7 +31,7 @@ class UserRead(UserBase):
     class Config:
         from_attributes = True
 
-# Farm Schema
+#  Schema
 class FarmBase(BaseModel):
     lat: float
     lon: float
