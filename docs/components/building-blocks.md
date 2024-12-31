@@ -66,4 +66,4 @@ def test_calculate_growth_rate():
     light_exposure = 8
     expected_rate = (soil_moisture * 0.4) + (light_exposure * 0.6)
     assert calculate_growth_rate(soil_moisture, light_exposure) == expected_rate
-
+```

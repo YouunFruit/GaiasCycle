@@ -3,7 +3,7 @@
 ## Architecture Diagram
 
 Below is the simplified architecture diagram of the **Gaia's Cycle** project, which uses color coding to represent different components and their relationships.
-![Gaia's Cycle Architecture Diagram](docs/images/archetecturediagram.png)
+![Gaia's Cycle Architecture Diagram](../images/archetecturediagram.png)
 
 *The diagram above illustrates the core components of the Gaia's Cycle project and their relationships.*
 

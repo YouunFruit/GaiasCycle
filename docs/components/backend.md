@@ -1,8 +1,4 @@
-# Backend Components
 
----
-
-# Backend Documentation
 
 ## Backend Architecture and Responsibilities
 

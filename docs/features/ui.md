@@ -47,10 +47,3 @@ The following components make up the Gaia's Cycle UI:
 
 ---
 
-## UI Journey
-
-The following diagram illustrates the user's journey through the UI components:
-
-![UI Journey](path-to-ui-journey-graph.png)
-
----
