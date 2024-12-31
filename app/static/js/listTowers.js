@@ -2,19 +2,20 @@ document.addEventListener("DOMContentLoaded", async () => {
     const tableBody = document.querySelector("tbody");
 
     try {
-        const response = await fetch("http://localhost:8000/api/farm");
-        if (!response.ok) throw new Error("Failed to fetch farms.");
+        const response = await fetch("http://localhost:8000/api/tower");
+        if (!response.ok) throw new Error("Failed to fetch towers.");
 
-        const farms = await response.json();
-        tableBody.innerHTML = farms
-            .map(farm => `
+        const towers = await response.json();
+        tableBody.innerHTML = towers
+            .map(tower => `
                 <tr>
-                    <td>${farm.id}</td>
-                    <td>${farm.lat}, ${farm.lon}</td>
-                    <td>${farm.size}</td>
+                    <td>${tower.id}</td>
+                    <td>${tower.farm_id}</td>
+                    <td>${tower.slot_amount}</td>
+                    <td>${tower.slot_amount}</td>
                     <td>
-                        <button class="btn btn-sm btn-primary" onclick="editFarm(${farm.id})">Edit</button>
-                        <button class="btn btn-sm btn-danger" onclick="deleteFarm(${farm.id})">Delete</button>
+                        <button class="btn btn-sm btn-primary" onclick="editTower(${tower.id})">Edit</button>
+                        <button class="btn btn-sm btn-danger" onclick="deleteTower(${tower.id})">Delete</button>
                     </td>
                 </tr>
             `).join('');
@@ -23,7 +24,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 });
 
-async function deleteFarm(farmId) {
+async function deleteTower(farmId) {
     if (!confirm("Are you sure you want to delete this farm?")) return;
 
     try {

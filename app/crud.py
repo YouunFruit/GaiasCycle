@@ -98,6 +98,14 @@ async def get_towers( db: AsyncSession = Depends(get_db)) -> List[TowerRead]:
         raise HTTPException(status_code=404, detail="Tower not found")
     return [TowerRead.model_validate(tower) for tower in towers]
 
+async def get_users( db: AsyncSession = Depends(get_db)) -> List[UserRead]:
+    stmt = select(User)
+    result = await db.execute(stmt)
+    users = result.scalars().all()
+    if not users:
+        raise HTTPException(status_code=404, detail="Tower not found")
+    return [UserRead.model_validate(user) for user in users]
+
 async def get_devices(db: AsyncSession = Depends(get_db)) -> list[dict[str, Any]]:
     stmt = select(Device)
     result = await db.execute(stmt)

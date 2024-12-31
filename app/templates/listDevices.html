@@ -23,10 +23,13 @@
             <thead class="table-dark">
             <tr>
                 <th onclick="sortTable(0)">Device ID</th>
-                <th onclick="sortTable(1)">Device Name</th>
-                <th onclick="sortTable(2)">Device Type</th>
-                <th onclick="sortTable(3)">Status</th>
-                <th> Belongs to</th>
+                <th onclick="sortTable(1)">Farm ID</th>
+                <th onclick="sortTable(2)">Tower ID</th>
+                <th onclick="sortTable(3)">Slot ID</th>
+                <th onclick="sortTable(4)">Status</th>
+                <th onclick="sortTable(5)">value</th>
+                <th onclick="sortTable(6)">unit</th>
+                <th onclick="sortTable(7)">installation date</th>
                 <th>Actions</th>
             </tr>
             </thead>
@@ -58,6 +61,7 @@
         <a href="/admin/addDevice" class="btn btn-success mt-3">Add New Device</a>
     </div>
 </div>
+    <script src="http://localhost:8000/static/js/listDevices.js"></script>
 
 <script>
     function sortTable(columnIndex) {

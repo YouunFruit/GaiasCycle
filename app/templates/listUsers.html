@@ -83,6 +83,38 @@
     </div>
 </div>
 
+    <script>
+
+        async function start() {
+            const div = document.getElementById("userList")
+            fetch("http://localhost:8000/api/user")
+                .then((response) => response.json())
+                .then((responseJSON) => {
+                    console.log(responseJSON[0])
+                    for (let i = 0; i < responseJSON.length; i++) {
+                        div.innerHTML += `
+                    <div class="col-md-6 col-lg-4 mb-4 user-item" data-name="${responseJSON[i].name}" data-role="Student, Developer">
+                        <div class="card h-100 shadow-sm">
+                            <img
+                                    src="https://avatars.githubusercontent.com/u/68996614?v=4"
+                                    alt="${responseJSON[i].name}"
+                                    class="card-img-top user-image"
+                            />
+                            <div class="card-body">
+                                <h5 class="card-title">${responseJSON[i].name}</h5>
+                                <p class="card-text"><strong>Email:</strong> ${responseJSON[i].contact}</p>
+                                <p class="card-text"><strong>Role:</strong> Student, Developer</p>
+                            </div>
+                        </div>
+                    </div>`
+                    }
+
+
+                })
+                .catch(error => {console.log(error)});
+        }
+        start()
+    </script>
 <script>
     // Function to filter users based on search input
     function filterUsers() {
